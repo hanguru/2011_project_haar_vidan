@@ -1,0 +1,70 @@
+image.c:      if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)) {
+image.c:      else if(img.type==P_SLICE && img.number%fake_intra_period==0) {
+image.c:      else if(img.type==P_SLICE && img.number%fake_intra_period==1) {
+lencod.c:	   img.number%fake_intra_period!=0&&
+lencod.c:	   img.number%fake_intra_period!=1&&
+lencod.c:	   img.number%fake_intra_period!=(fake_intra_period-1))
+lencod.c://	   img.number%fake_intra_period!=0&&
+lencod.c://	   img.number%fake_intra_period!=1&&
+lencod.c://	   img.number%fake_intra_period!=(fake_intra_period-1))
+lencod.c://kik_fw---              if(img.type==P_SLICE && img.number%fake_intra_period==0){
+lencod.c://kik_fw---              }else if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)){
+lencod.c://kik_fw---              }else if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1){
+lencod.c://kik_fw---              if(img.type==P_SLICE && img.number%fake_intra_period==0){
+lencod.c://kik_fw---              }else if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)){
+lencod.c://kik_fw---              }else if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1){
+lencod.c://kik_fw---              if(img.type==P_SLICE && img.number%fake_intra_period==0){
+lencod.c://kik_fw---              }else if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)){
+lencod.c://kik_fw---              }else if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1){
+lencod.c:            if(img.type==P_SLICE && img.number%fake_intra_period==0){
+lencod.c:            }else if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)){
+lencod.c:            }else if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1){
+lencod.c:            if(img.type==P_SLICE && img.number%fake_intra_period==0){
+lencod.c:            }else if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)){
+lencod.c:            }else if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1){
+lencod.c:            if(img.type==P_SLICE && img.number%fake_intra_period==0){
+lencod.c:            }else if(img.type==P_SLICE && img.number%fake_intra_period==(fake_intra_period-1)){
+lencod.c:            }else if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1){
+slice.c:      if(img.type==P_SLICE && img.number%fake_intra_period==0 && img.number!=1 )
+slice.c:          if((img.number/fake_intra_period)%mb_sub_groups == 0){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 2){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 4){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 5){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 3){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 1){
+slice.c:          if((img.number/fake_intra_period)%mb_sub_groups == 1){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 0){
+slice.c:          else if((img.number/fake_intra_period)%mb_sub_groups == 2){
+slice.c:    if(img.type==P_SLICE && img.number%fake_intra_period==0){
+slice.c:        img.number%fake_intra_period==(fake_intra_period-1) &&
+slice.c:        ((mby/intra_mb_lines)==(((img.number/fake_intra_period)-1)%mb_sub_groups)) && img.number!=1)intra_line_prev = 1;//intra
+slice.c://kik_fw-         img.number%fake_intra_period==0 &&
+slice.c://kik_fw-         ((mby/intra_mb_lines)==(((img.number/fake_intra_period)-1)%mb_sub_groups)) && img.number!=1) intra_line_curr = 1; //intra
+slice.c://kik_fw-         img.number%fake_intra_period==1 ){
+slice.c://kik_fw-        if(((mby/intra_mb_lines)!=((((img.number-1)/fake_intra_period)-1)%mb_sub_groups)) && img.number>1){
+slice.c://kik_fw-        else if(((mby/intra_mb_lines)==((((img.number-1)/fake_intra_period)-1)%mb_sub_groups)) && img.number>1){
+slice.c:     if(img.type==P_SLICE && img.number%fake_intra_period==0 && img.number!=1 && select_num == 1) //intra mode
+slice.c:     if(img.type==P_SLICE && img.number%fake_intra_period==1 && img.number!=1 ) //skip mode
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0))VLC_CR0 = (0x1|((img.number&0x7f)<<1));//2010.06.04
+slice.c:                                 if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:			         if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0))VLC_CR0  = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                   if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)) VLC_CR0 = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:			           if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0))VLC_CR0 = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                   if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:                                   if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)) VLC_CR0 = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                   if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:			          if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0))VLC_CR0  = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)) VLC_CR0 = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04
+slice.c:				  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0))VLC_CR0  = (0x1|((img.number&0x7f)<<1)); //2010.06.04
+slice.c:                                  if(!(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0)){ //2010.06.04 
+slice.c:                                           if(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0){ //2010.06.04
+slice.c:                                           if(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0){ //2010.06.04
+slice.c:                                           if(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0){ //2010.06.04
+slice.c:                                           if(img.type==P_SLICE && img.number%fake_intra_period==0 && intra_line_curr==0){ //2010.06.04
+slice.c:	   img.number%fake_intra_period!=0 &&
+slice.c:	   img.number%fake_intra_period!=1 &&
+slice.c:	   img.number%fake_intra_period!=(fake_intra_period-1)) {

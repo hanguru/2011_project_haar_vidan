@@ -1,0 +1,332 @@
+Index: src/fpga.c
+===================================================================
+--- src/fpga.c	(revision 124)
++++ src/fpga.c	(working copy)
+@@ -32,8 +32,8 @@
+     input.LFDisableIdc            = 0;    // LoopFilterEnable
+     //input.LFAlphaC0Offset         =  ((char)LF_ALPHA_CO_OFFSET); //090409_jykim_remove_register+
+     //input.LFBetaOffset            =  ((char)LF_BETA_OFFSET); //090409_jykim_remove_register+
+-    input.LFAlphaC0Offset         =  6; //090409_jykim_remove_register+
+-    input.LFBetaOffset            =  6; //090409_jykim_remove_register+
++    input.LFAlphaC0Offset         =  3; //090409_jykim_remove_register+
++    input.LFBetaOffset            =  3; //090409_jykim_remove_register+
+   	DCTQ_CR0 = 0x80;                                    //ME and IPDCTQ hardwired
+   	ME_CR11  = 0x80000000;                                    //ME and IPDCTQ hardwired
+   	OSB_FILL_RATE =  OSB_FIFO_RATE_IDX;
+@@ -152,7 +152,7 @@
+ 		JPEG_WIDTH 	  	= 0x14; //HIF_REG51  ; jpeg width
+ 		JPEG_HEIGHT   	= 0x0F; //HIF_REG52  ; jpeg height
+ 
+-		input.intra_period            = INTRA_PERIOD;	// IntraPeriod
++		input.intra_period            = INTRA_PERIOD * 10;	// IntraPeriod
+ 	}
+ 
+ 	input.qp0                     = QP_VALUE_I;	// QPFirstFrame
+Index: internal/jpeg_run_isp.c
+===================================================================
+--- internal/jpeg_run_isp.c	(revision 124)
++++ internal/jpeg_run_isp.c	(working copy)
+@@ -114,7 +114,7 @@
+   //read qfacter and gray_level value
+   //qfacter = 0x7F & *HIF_REG25; //(6:0) 1~100
+     qfacter = JPEG_QUALITY_FACTOR;
+-	if ( qfacter > 40 ) qfacter = 40; //jpeg Debug
++	if ( qfacter > 55 ) qfacter = 55; //jpeg Debug
+     //qfacter = (0x7F & JPEG_QUALITY_FACTOR);
+     if (OM_SELECT_EXTERN_CODE_MEM_TYPE)
+       burst_len = 0;
+Index: internal/lencod.c
+===================================================================
+--- internal/lencod.c	(revision 124)
++++ internal/lencod.c	(working copy)
+@@ -130,8 +130,8 @@
+ 
+ OS_EVENT *pStartSem;
+ 
+-int real_frame_rate = 0;
+ 
++
+ /************** GLOBAL VARIABLES ******************/
+ void set_img_size_to_dmac(int width, int height) {
+ 	VIM_SIZE 		= ((width >> 4) & 0xff) | (((height >> 4) & 0xff) << 8);
+@@ -139,11 +139,12 @@
+ 	VLC_SIZE 		= ((width >> 4) & 0xff) | (((height >> 4) & 0xff) << 8);
+ }
+ 
+-void simpleRateControlFrameDrop(void);
++void simpleRateControl(void);
+ 
+ int AlignOffsetAddr(int offset, int align);
+ void SetupForDoubleBuffer(int frame_sel, int double_buffer_en, int width_offset, int height_offset, int src_ref_frame_diff);
+ int max_bit_rate_value;
++int less_than_orig_target_cnt;
+ /*!
+  ***********************************************************************
+  * \brief
+@@ -157,7 +158,7 @@
+  ***********************************************************************
+  */
+ #define MAX_SIMPLE_RATE_CONTROL_QP		51
+-#define MIN_SIMPLE_RATE_CONTROL_QP		29
++#define MIN_SIMPLE_RATE_CONTROL_QP		20
+ int lencod(void) //jykim_080725_ucos_porintg-- 
+ {
+ 	INT8U err = 0;
+@@ -279,10 +280,8 @@
+ 		//Frame Rate Control
+ 		if ( RATE_CONTROL_FRAME_RATE > MAX_FRAME_RATE )
+ 			RATE_CONTROL_FRAME_RATE = MAX_FRAME_RATE;
++		targetClockTick = calulate_system_clock()/(RATE_CONTROL_FRAME_RATE);
+ 
+-		real_frame_rate =  RATE_CONTROL_FRAME_RATE;
+-		targetClockTick = calulate_system_clock()/(real_frame_rate);
+-
+ 		mtspr(SPR_TTCR, 0);
+ 
+ 		jpeg_frame_cnt = 0; 
+@@ -352,7 +351,7 @@
+ 			{
+ 				if ( encodeCnt == 1 )
+ 				{
+-					input.qp0 = CONSTANT_QP_VALUE;
++					input.qp0 = 33;
+ 					OPERATION_DEFINE3 |= KEYFRAME_REQUEST_BIT;
+ 				}
+ 			}
+@@ -446,10 +445,10 @@
+ 			if ( RATE_CONTROL_FRAME_RATE > MAX_FRAME_RATE )
+ 				RATE_CONTROL_FRAME_RATE = MAX_FRAME_RATE;
+ 
+-			if ( prevFrameRate != real_frame_rate )
++			if ( prevFrameRate != RATE_CONTROL_FRAME_RATE )
+ 			{
+-				targetClockTick = calulate_system_clock()/(real_frame_rate);
+-				prevFrameRate = real_frame_rate;
++				targetClockTick = calulate_system_clock()/(RATE_CONTROL_FRAME_RATE);
++				prevFrameRate = RATE_CONTROL_FRAME_RATE;
+ 			}
+ 			encodeDone = 0;
+ 
+@@ -465,16 +464,10 @@
+ 				encode_one_frame();
+ 				//uart_print("ed\n\r");
+ 				encodeDone = 1;
+-
+-				if ( avata_capture_mode )
+-				{
+-					real_frame_rate = MAX_FRAME_RATE;
+-				}
++				if ( img.type == P_SLICE )
++					simpleRateControl();
+ 				else
+-				{
+-					if ( img.type == P_SLICE )
+-						simpleRateControlFrameDrop();
+-				}
++					less_than_orig_target_cnt = 0;
+ 
+ 				if ( encodeCnt > 0 )
+ 				{
+@@ -527,11 +520,6 @@
+ 								if (h264DualStreamBuf.set_idx == VIDEO_BUFFER_CNT)
+ 									h264DualStreamBuf.set_idx = 0;
+ 							}
+-							temp_input_qp0 = input.qp0 - 1;
+-							if ( temp_input_qp0 < CONSTANT_QP_VALUE )
+-								temp_input_qp0 = CONSTANT_QP_VALUE;
+-							input.qp0 = temp_input_qp0;
+-
+ 							OS_EXIT_CRITICAL();
+ 						}
+ 						prev_i = 1;
+@@ -653,8 +641,8 @@
+ 						else if ( jpegDualStreamBuf.len[(int)jpegDualStreamBuf.set_idx] < 4 * 1024 )
+ 						{
+  							temp_jpeg_quality = JPEG_QUALITY_FACTOR + 1;
+-							if ( temp_jpeg_quality > 40 )
+-								temp_jpeg_quality = 40;
++							if ( temp_jpeg_quality > 55 )
++								temp_jpeg_quality = 55;
+ 							JPEG_QUALITY_FACTOR = temp_jpeg_quality;
+ 						}
+ 					}
+@@ -1192,83 +1180,126 @@
+ 	jpeg_api(cinfo, 1);
+ }
+ 
+-void simpleRateControlFrameDrop(void)
++void simpleRateControl(void)
+ {
+ 	//Simple Rate Control
+ 	int target_bit_rate = 0;
+ 	int target_frame_rate = 0;
+ 	int target_one_frame_size_byte = 0;
++	int orig_target_one_frame_size_byte = 0;
+ 	int result_one_frame_size_byte = 0;
+ 	//int average_frame_size = 0;
++	static int prev_target_bit_rate = 0;
++	static int prev_target_frame_rate = 0;
+ 
+ 	target_bit_rate  = RATE_CONTROL_BIT_RATE_VALUE;
+-	if ( target_bit_rate > max_bit_rate_value ) target_bit_rate =  max_bit_rate_value;
+-	target_frame_rate  = real_frame_rate;
++	if ( target_bit_rate > max_bit_rate_value )  target_bit_rate =  max_bit_rate_value;
++	target_frame_rate  = RATE_CONTROL_FRAME_RATE;
+ 
++	if ( target_bit_rate != prev_target_bit_rate )
++	{
++		//Setting Default QP // {{{
++		if ( target_bit_rate > ( 1000 * 1024 ) )
++		{
++			input.qp0 = input.qpN = 29;
++		}
++		else if ( target_bit_rate >  ( 900 * 1024 ) )
++		{
++			input.qp0 = input.qpN = 30;
++		}
++		else if ( target_bit_rate >  ( 800 * 1024 ) )
++		{
++			input.qp0 = input.qpN = 32;
++		}
++		else if ( target_bit_rate >  ( 700 * 1024 ) )
++		{
++			input.qp0 = input.qpN = 34;
++		}
++		else if ( target_bit_rate >  ( 600 * 1024 ) )
++			input.qp0 = input.qpN = 36;
++		else if ( target_bit_rate >  ( 500 * 1024 ) )
++			input.qp0 = input.qpN = 39;
++		else if ( target_bit_rate >  ( 400 * 1024 ) )
++			input.qp0 = input.qpN = 41;
++		else if ( target_bit_rate >  ( 300 * 1024 ) )
++			input.qp0 = input.qpN = 43;
++		else if ( target_bit_rate >  ( 200 * 1024 ) )
++			input.qp0 = input.qpN = 45;
++		else if ( target_bit_rate >  ( 100 * 1024 ) )
++			input.qp0 = input.qpN = 47;
++		else
++			input.qp0 = input.qpN = 49;
++		// }}}
++	}
++
+ 	target_one_frame_size_byte = (target_bit_rate / target_frame_rate) / 8;
++	orig_target_one_frame_size_byte = (target_bit_rate / RATE_CONTROL_FRAME_RATE) / 8;
+ 
+ 	result_one_frame_size_byte = 
+ 		h264DualStreamBuf.len[(int)h264DualStreamBuf.set_idx];
+ 
+ 	if  ( target_one_frame_size_byte > result_one_frame_size_byte + 1024 )
+ 	{
+-		//if ( real_frame_rate == RATE_CONTROL_FRAME_RATE )
+-		//{
+-		//	input.qpN -= 3;
+-		//	if ( input.qpN < MIN_SIMPLE_RATE_CONTROL_QP )
+-		//		input.qp0 = input.qpN == MIN_SIMPLE_RATE_CONTROL_QP;
+-		//}
+-		//else
+-		{
+-			real_frame_rate += 3;
+-			if ( real_frame_rate > RATE_CONTROL_FRAME_RATE )
+-				real_frame_rate = RATE_CONTROL_FRAME_RATE;
+-		}
++		input.qpN -= 3;
+ 	}
+ 	else if  ( target_one_frame_size_byte > result_one_frame_size_byte + 512 )
+ 	{
+-		//if ( real_frame_rate == RATE_CONTROL_FRAME_RATE )
+-		//{
+-		//	input.qpN -= 2;
+-		//	if ( input.qpN < MIN_SIMPLE_RATE_CONTROL_QP )
+-		//		input.qp0 = input.qpN == MIN_SIMPLE_RATE_CONTROL_QP;
+-		//}
+-		//else
+-		{
+-			real_frame_rate += 2;
+-			if ( real_frame_rate > RATE_CONTROL_FRAME_RATE )
+-				real_frame_rate = RATE_CONTROL_FRAME_RATE;
+-		}
++		input.qpN -= 2;
+ 	}
+ 	else if  ( target_one_frame_size_byte > result_one_frame_size_byte + 256 )
+ 	{
+-		//if ( real_frame_rate == RATE_CONTROL_FRAME_RATE )
+-		//{
+-		//	input.qpN -= 1;
+-		//	if ( input.qpN < MIN_SIMPLE_RATE_CONTROL_QP )
+-		//		input.qp0 = input.qpN == MIN_SIMPLE_RATE_CONTROL_QP;
+-		//}
+-		//else
++		input.qpN -= 1;
++	}
++	else if  ( orig_target_one_frame_size_byte > result_one_frame_size_byte + 256 )
++	{
++		less_than_orig_target_cnt++;
++		if ( less_than_orig_target_cnt > 2 ) 
+ 		{
+-			real_frame_rate += 1;
+-			if ( real_frame_rate > RATE_CONTROL_FRAME_RATE )
+-				real_frame_rate = RATE_CONTROL_FRAME_RATE;
++			input.qpN -= 1;
+ 		}
+ 	}
++	else if ( target_one_frame_size_byte < result_one_frame_size_byte - 2048 )
++	{	
++		input.qpN += 6;
++	}
++	else if ( target_one_frame_size_byte < result_one_frame_size_byte - 1024 )
++	{	
++		input.qpN += 3;
++	}
++	else if ( target_one_frame_size_byte < result_one_frame_size_byte - 512 )
++	{	
++		input.qpN += 2;
++	}
+ 	else if ( target_one_frame_size_byte < result_one_frame_size_byte - 256 )
+ 	{	
+-		//if ( input.qpN < CONSTANT_QP_VALUE )
+-		//	input.qpN = input.qp0 = CONSTANT_QP_VALUE;
+-		//else
+-		{
+-			real_frame_rate -= 1;
+-			if ( real_frame_rate < 1 )
+-				real_frame_rate = 1;
+-		}
++		input.qpN += 1;
+ 	}
++	else if ( orig_target_one_frame_size_byte < result_one_frame_size_byte - 256 )
++	{	
++		less_than_orig_target_cnt = 0;
++	}
++
++
++	if ( input.qpN < MIN_SIMPLE_RATE_CONTROL_QP )
++		input.qpN = MIN_SIMPLE_RATE_CONTROL_QP;
++	else if ( input.qpN > MAX_SIMPLE_RATE_CONTROL_QP )
++		input.qpN = MAX_SIMPLE_RATE_CONTROL_QP;
++
++	input.qp0 = input.qpN;
++
++	prev_target_bit_rate = target_bit_rate;
++	prev_target_frame_rate = target_frame_rate;
++
++	//uart_print("rate:");
++	//uart_printInt(input.qpN);
++	//uart_print(",");
++	//uart_printInt(target_one_frame_size_byte);
++	//uart_print(",");
++	//uart_printInt(result_one_frame_size_byte);
++	//uart_print("\n\r");
++
+ }
+ 
+-
+ int AlignOffsetAddr(int offset, int align)
+ {
+     int aligned_addr;
+Index: vidan4100_fw_information.bin
+===================================================================
+--- vidan4100_fw_information.bin	(revision 124)
++++ vidan4100_fw_information.bin	(working copy)
+@@ -1 +1 @@
+-1.96.2
++1.96.2(ratecontrol)

@@ -1,0 +1,8 @@
+CPBIN:
+	@cp vidan4100.little.bin 					rom0
+	@cp vidan4100.internal.little.bin 			rom1
+	@cp vidan4100.rom2ram.little.bin 			rom2
+	@cp vidan4100_flash_initial_register.bin 	rom3
+	@tr -d "\n" < vidan4100_fw_information.bin > rom4
+	@cp rom* ../../../lgdtv_vidan4110_test_pgm_project/bin/romfile
+

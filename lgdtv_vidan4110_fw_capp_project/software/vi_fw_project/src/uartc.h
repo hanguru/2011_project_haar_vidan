@@ -1,0 +1,20 @@
+void ProcessUARTCommand();
+int uartc_input_line(const char *line);
+void Configure_via_UART();
+
+void HandlePrintParam(const char *line);
+void HandleWidth(const char *param);
+void HandleHeight(const char *line);
+void HandleCamWidth(const char *line);
+void HandleCamHeight(const char *line);
+void HandleFrameCount(const char *line);
+void HandleSrcFrame(const char *line);
+void HandleStreamDir(const char *line);
+void HandleXOffset(const char *line);
+void HandleYOffset(const char *line);
+void HandleXYHW(const char *line);
+void HandleQP0(const char *line);
+void HandleQPN(const char *line);
+void HandleQP(const char *line);
+void HandleOffset(const char *line);
+int FindChar(const char *str, char c);

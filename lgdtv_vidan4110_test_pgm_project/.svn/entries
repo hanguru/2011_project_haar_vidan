@@ -1,0 +1,77 @@
+10
+
+dir
+3
+svn+ssh://macbook/var/svn/lgdtv_vidan4110_test_pgm
+svn+ssh://macbook/var/svn/lgdtv_vidan4110_test_pgm
+
+
+
+2010-02-21T23:53:13.534998Z
+3
+jykim
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4ebfe155-5a2e-47f7-9a92-034ea4f2394a
+
+include
+dir
+
+lib
+dir
+
+src
+dir
+
+bin
+dir
+
+obj
+dir
+
+Makefile
+file
+5
+
+
+
+2010-03-24T01:36:58.000000Z
+9d3f867426b61eeccb97e53c14856230
+2010-03-25T08:01:30.607225Z
+5
+jykim
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1436
+

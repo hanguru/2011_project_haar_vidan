@@ -1,0 +1,23 @@
+#ifndef _REDWOOD_RETURN_CODE_H_
+#define _REDWOOD_RETURN_CODE_H_
+
+enum redwood_result_code
+{
+	WRONG_RESOLUTION			= -81,
+	GET_WRONG_STREAM_LEN		= -73,
+	GET_WRONG_RESP_RESULT		= -72,
+	GET_WRONG_RESP_LEN			= -71,
+	CMD_WRONG_CMD_FAIL			= -62,
+	CMD_RESPONSE_RET_FAIL		= -61,
+	USB_DEVICE_NULL_FAIL		= -53,
+	USB_DEVICE_FIND_FAIL		= -52,
+	USB_DEVICE_OPEN_FAIL  		= -51,
+	LIBUSB_FAIL 				= -3,
+	END_OF_FILE 				= -2,
+	FILE_OPEN_FAIL 				= -1,
+	SUCCESS 					= 0,
+}; 
+
+
+#endif
+

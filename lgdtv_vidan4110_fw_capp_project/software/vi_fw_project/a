@@ -1,0 +1,93 @@
+common/main.c:	//*HIF_REG57  = 0xab; //HIF_REG57  ;slice_argument : 12
+Binary file internal/vlc.o matches
+internal/image.S:	.stabs	"input_par:T(1,27)=s160qp0:(0,1),0,32;qpN:(0,1),32,32;jumpd:(0,1),64,32;img_width:(0,1),96,32;img_height:(0,1),128,32;cam_width:(0,1),160,32;cam_height:(0,1),192,32;cb_offset:(0,1),224,32;blc_size:(1,28)=ar(6,8);0;7;(1,14),256,512;intra_period:(0,1),768,32;LFSendParameters:(0,1),800,32;LFDisableIdc:(0,1),832,32;LFAlphaC0Offset:(0,1),864,32;LFBetaOffset:(0,1),896,32;RCEnable:(0,1),928,32;bit_rate0:(0,1),960,32;bit_rate1:(0,1),992,32;bit_rate:(0,1),1024,32;PrevBitRate:(0,1),1056,32;FrameRate:(0,1),1088,32;SeinitialQP0:(0,1),1120,32;SeinitialQP1:(0,1),1152,32;SeinitialQP:(0,1),1184,32;slice_mode:(0,1),1216,32;slice_argument:(0,1),1248,32;;",128,0,0,0
+internal/ratectl.S:	.stabs	"input_par:T(6,27)=s160qp0:(0,1),0,32;qpN:(0,1),32,32;jumpd:(0,1),64,32;img_width:(0,1),96,32;img_height:(0,1),128,32;cam_width:(0,1),160,32;cam_height:(0,1),192,32;cb_offset:(0,1),224,32;blc_size:(6,28)=ar(3,8);0;7;(6,14),256,512;intra_period:(0,1),768,32;LFSendParameters:(0,1),800,32;LFDisableIdc:(0,1),832,32;LFAlphaC0Offset:(0,1),864,32;LFBetaOffset:(0,1),896,32;RCEnable:(0,1),928,32;bit_rate0:(0,1),960,32;bit_rate1:(0,1),992,32;bit_rate:(0,1),1024,32;PrevBitRate:(0,1),1056,32;FrameRate:(0,1),1088,32;SeinitialQP0:(0,1),1120,32;SeinitialQP1:(0,1),1152,32;SeinitialQP:(0,1),1184,32;slice_mode:(0,1),1216,32;slice_argument:(0,1),1248,32;;",128,0,0,0
+internal/lencod.S:	.stabs	"input_par:T(13,27)=s160qp0:(0,1),0,32;qpN:(0,1),32,32;jumpd:(0,1),64,32;img_width:(0,1),96,32;img_height:(0,1),128,32;cam_width:(0,1),160,32;cam_height:(0,1),192,32;cb_offset:(0,1),224,32;blc_size:(13,28)=ar(5,8);0;7;(13,14),256,512;intra_period:(0,1),768,32;LFSendParameters:(0,1),800,32;LFDisableIdc:(0,1),832,32;LFAlphaC0Offset:(0,1),864,32;LFBetaOffset:(0,1),896,32;RCEnable:(0,1),928,32;bit_rate0:(0,1),960,32;bit_rate1:(0,1),992,32;bit_rate:(0,1),1024,32;PrevBitRate:(0,1),1056,32;FrameRate:(0,1),1088,32;SeinitialQP0:(0,1),1120,32;SeinitialQP1:(0,1),1152,32;SeinitialQP:(0,1),1184,32;slice_mode:(0,1),1216,32;slice_argument:(0,1),1248,32;;",128,0,0,0
+internal/vlc.S:	.stabs	"input_par:T(1,27)=s160qp0:(0,1),0,32;qpN:(0,1),32,32;jumpd:(0,1),64,32;img_width:(0,1),96,32;img_height:(0,1),128,32;cam_width:(0,1),160,32;cam_height:(0,1),192,32;cb_offset:(0,1),224,32;blc_size:(1,28)=ar(6,8);0;7;(1,14),256,512;intra_period:(0,1),768,32;LFSendParameters:(0,1),800,32;LFDisableIdc:(0,1),832,32;LFAlphaC0Offset:(0,1),864,32;LFBetaOffset:(0,1),896,32;RCEnable:(0,1),928,32;bit_rate0:(0,1),960,32;bit_rate1:(0,1),992,32;bit_rate:(0,1),1024,32;PrevBitRate:(0,1),1056,32;FrameRate:(0,1),1088,32;SeinitialQP0:(0,1),1120,32;SeinitialQP1:(0,1),1152,32;SeinitialQP:(0,1),1184,32;slice_mode:(0,1),1216,32;slice_argument:(0,1),1248,32;;",128,0,0,0
+Binary file internal/header.o matches
+internal/header.S:	.stabs	"input_par:T(2,27)=s160qp0:(0,1),0,32;qpN:(0,1),32,32;jumpd:(0,1),64,32;img_width:(0,1),96,32;img_height:(0,1),128,32;cam_width:(0,1),160,32;cam_height:(0,1),192,32;cb_offset:(0,1),224,32;blc_size:(2,28)=ar(7,8);0;7;(2,14),256,512;intra_period:(0,1),768,32;LFSendParameters:(0,1),800,32;LFDisableIdc:(0,1),832,32;LFAlphaC0Offset:(0,1),864,32;LFBetaOffset:(0,1),896,32;RCEnable:(0,1),928,32;bit_rate0:(0,1),960,32;bit_rate1:(0,1),992,32;bit_rate:(0,1),1024,32;PrevBitRate:(0,1),1056,32;FrameRate:(0,1),1088,32;SeinitialQP0:(0,1),1120,32;SeinitialQP1:(0,1),1152,32;SeinitialQP:(0,1),1184,32;slice_mode:(0,1),1216,32;slice_argument:(0,1),1248,32;;",128,0,0,0
+Binary file internal/lencod.o matches
+internal/image.c:  if( input.slice_mode == 1 ) VLC_SLICE_ARGUMENT = input.slice_argument;
+Binary file internal/.slice.c.swp matches
+Binary file internal/slice.o matches
+Binary file internal/image.o matches
+Binary file internal/ratectl.o matches
+internal/slice.S:	.stabs	"input_par:T(7,27)=s160qp0:(0,1),0,32;qpN:(0,1),32,32;jumpd:(0,1),64,32;img_width:(0,1),96,32;img_height:(0,1),128,32;cam_width:(0,1),160,32;cam_height:(0,1),192,32;cb_offset:(0,1),224,32;blc_size:(7,28)=ar(4,8);0;7;(7,14),256,512;intra_period:(0,1),768,32;LFSendParameters:(0,1),800,32;LFDisableIdc:(0,1),832,32;LFAlphaC0Offset:(0,1),864,32;LFBetaOffset:(0,1),896,32;RCEnable:(0,1),928,32;bit_rate0:(0,1),960,32;bit_rate1:(0,1),992,32;bit_rate:(0,1),1024,32;PrevBitRate:(0,1),1056,32;FrameRate:(0,1),1088,32;SeinitialQP0:(0,1),1120,32;SeinitialQP1:(0,1),1152,32;SeinitialQP:(0,1),1184,32;slice_mode:(0,1),1216,32;slice_argument:(0,1),1248,32;;",128,0,0,0
+internal/slice.S:.proc _compute_slice_argument
+internal/slice.S:	.stabs	"compute_slice_argument:F(0,1)",36,0,84,_compute_slice_argument
+internal/slice.S:	.global _compute_slice_argument
+internal/slice.S:	.type	_compute_slice_argument, @function
+internal/slice.S:_compute_slice_argument:
+internal/slice.S:	.size	_compute_slice_argument, .-_compute_slice_argument
+internal/slice.c:int compute_slice_argument(int bitrate, int type)
+internal/slice.c:                                        if(l==input.slice_argument-1) SliceLastMB_P  =  mby;
+internal/slice.c:                                  if(l==input.slice_argument-1) l=0;
+internal/slice.c:                                      if(k==input.slice_argument-1) SliceLastMB_I  = mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                      if(l==input.slice_argument-1) SliceLastMB_P  = (1 <<16) | mby;
+internal/slice.c:                                  if(l==input.slice_argument-1) l=0;
+internal/slice.c:                                       if(k==input.slice_argument-1) SliceLastMB_I  = mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                      if(k==input.slice_argument-1) SliceLastMB_I  = (1 <<16) | mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                      if(l==input.slice_argument-1) SliceLastMB_P  = ((mbx) <<16) | mby;
+internal/slice.c:                                  if(l==input.slice_argument-1) l=0;
+internal/slice.c:                                      if(k==input.slice_argument-1) SliceLastMB_I  = ((mbx-1) <<16) | mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                     //end_of_slice = ((j) == input.slice_argument*(slice_no+1));
+internal/slice.c:                                      if(k==input.slice_argument-1) SliceLastMB_I  = (mbx << 16 ) | mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                       if(l==input.slice_argument-1) SliceLastMB_P  = ((mbx) <<16) | mby;
+internal/slice.c:                                  if(l==input.slice_argument-1) l=0;
+internal/slice.c:                                       if(k==input.slice_argument-1) SliceLastMB_I  = ((mbx-1) <<16) | mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                      // end_of_slice = ((j) == input.slice_argument*(slice_no+1));
+internal/slice.c:                                      if(k==input.slice_argument-1) SliceLastMB_I  = (mbx << 16 ) | mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                     // end_of_slice = ((j) == input.slice_argument*(slice_no+1));
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                      // end_of_slice = ((j) == input.slice_argument*(slice_no+1));
+internal/slice.c:                                      if(k==input.slice_argument-1) SliceLastMB_I  = ((mbx-1) <<16) | mby;
+internal/slice.c:                                  if(k==input.slice_argument-1) k=0;
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                   //  end_of_slice = ((j) == input.slice_argument*(slice_no+1));
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                   //  end_of_slice = ((j) == input.slice_argument*(slice_no+1));
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                     end_of_slice = ((j) == input.slice_argument*(slice_no+1)); //i=11
+internal/slice.c:                                             //img.cod_counter = input.slice_argument;
+internal/slice.c:                                               if(j2==input.slice_argument-1) j2=0;
+internal/slice.c:                                     //end_of_slice = ((j) == input.slice_argument*(slice_no+1)); //i=11
+src/fpga.c: 	input.slice_argument = 40; //IP
+src/fpga.c: 	//input.slice_argument = SLICE_ARGUMENT; //IP
+Binary file src/mb_access.o matches
+Binary file src/configfile.o matches
+Binary file src/fpga.o matches
+Binary file src/parsetcommon.o matches
+Binary file src/rdopt.o matches
+src/global.h:  int slice_argument;           //!< Argument to the specified slice algorithm
+Binary file src/mbuffer.o matches
+Binary file src/macroblock.o matches
+Binary file src/loopFilter.o matches
+Binary file src/parset.o matches
+src/configfile.c:// //input.slice_argument = 12; //IP
+src/configfile.c:// input.slice_argument = SLICE_ARGUMENT; //IP
+src/configfile.c:// //input.slice_argument = 3; //IP
+src/configfile.c:// //input.slice_argument = 10; //IP
+src/configfile.c:// //input.slice_argument = 12; //IP
+src/configfile.c:// //input.slice_argument = 20; //IP
+src/configfile.c:// //input.slice_argument = 11; //IP
+src/configfile.c:// //input.slice_argument = 50; //I
+Binary file src/filehandle.o matches
+tags:compute_slice_argument	internal/slice.c	/^int compute_slice_argument(int bitrate, int type)$/;"	f
+tags:slice_argument	src/global.h	/^  int slice_argument;           \/\/!< Argument to the specified slice algorithm$/;"	m	struct:input_par
+Binary file vidan4100 matches
+vidan4100.dump:02003bbc <_compute_slice_argument>:
+vidan4100.dump:compute_slice_argument():
+vidan4100.dump: 2003bdc:	41 0a 96                	b.bnei     r10,0x0,2003c45 <_compute_slice_argument+0x89>
+vidan4100.dump: 2003c43:	0d 18                   	b.j        2003ca5 <_compute_slice_argument+0xe9>
+vidan4100.map:                0x02003bbc                _compute_slice_argument

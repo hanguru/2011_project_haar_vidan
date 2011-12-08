@@ -1,0 +1,112 @@
+Index: redwood_lib_src/include/redwood_api.h
+===================================================================
+--- redwood_lib_src/include/redwood_api.h	(revision 46)
++++ redwood_lib_src/include/redwood_api.h	(working copy)
+@@ -1,7 +1,7 @@
+ #ifndef _REDWOOD_API_H_
+ #define _REDWOOD_API_H_
+ 
+-#define REDWOOD_DEBUG_PRINT		0
++#define REDWOOD_DEBUG_PRINT		1
+ 
+ typedef enum {
+ 	JPEG_FPS_LEVEL_6 = 0,
+Index: redwood_lib_src/src/redwood_usb_operation.c
+===================================================================
+--- redwood_lib_src/src/redwood_usb_operation.c	(revision 46)
++++ redwood_lib_src/src/redwood_usb_operation.c	(working copy)
+@@ -1496,19 +1496,19 @@
+ int redwood_usb_device_close(void)
+ {
+ 	int ret;
+-	//unsigned char commandBuf[64];
+-	//unsigned char resultBuf[64];
++	unsigned char commandBuf[64];
++	unsigned char resultBuf[64];
+ 
+ 	if ( !g_usb_handle ) return USB_DEVICE_NULL_FAIL; //if null handle
+ 
+ 	//Reset buffer
+ 
+-	//commandBuf[0] = 0x21;
+-	//commandBuf[1] = 23;
+-	//commandBuf[2] = 0;
+-	//commandBuf[3] = 1;
+-	//commandBuf[4] = 0x03;
+-	//ret = usb_send_command(5, commandBuf, 2, resultBuf);
++	commandBuf[0] = 0x21;
++	commandBuf[1] = 23;
++	commandBuf[2] = 0;
++	commandBuf[3] = 1;
++	commandBuf[4] = 0x03;
++	ret = usb_send_command(5, commandBuf, 2, resultBuf);
+ 
+ 
+ 	ret = libusb_release_interface(g_usb_handle, 0);
+@@ -1718,18 +1718,18 @@
+ 	}
+ 
+ 
+-	if ( i == readLen )
++//	if ( i == readLen )
++//	{
++//#if REDWOOD_DEBUG_PRINT
++//		printf("===>VIDAN4110 INFO : Last Firmware\n");
++//#endif
++//		is_usbcontrol_firmware_upgrade_thread_started = 0;
++//		pthread_mutex_unlock(&mutex_usb_operation);
++//		return NULL;
++//	}
++//	else
+ 	{
+ #if REDWOOD_DEBUG_PRINT
+-		printf("===>VIDAN4110 INFO : Last Firmware\n");
+-#endif
+-		is_usbcontrol_firmware_upgrade_thread_started = 0;
+-		pthread_mutex_unlock(&mutex_usb_operation);
+-		return NULL;
+-	}
+-	else
+-	{
+-#if REDWOOD_DEBUG_PRINT
+ 		printf("===>VIDAN4110 INFO : New Fimware %s\n", versionBuf);
+ #endif
+ 	}
+@@ -1845,7 +1845,7 @@
+ 	}
+ 
+ 	//Maximum Firmware uploading Time
+-	usleep(8000000);
++	usleep(5000000);
+ 
+ 	//Read Firmware upload error bit
+ 	commandBuf[0] = 0x20;
+Index: Makefile
+===================================================================
+--- Makefile	(revision 46)
++++ Makefile	(working copy)
+@@ -3,8 +3,8 @@
+ DEPEND = depend
+ 
+ 
+-CC = mipsel-linux-gcc
+-AR = mipsel-linux-ar
++CC = gcc
++AR = ar
+ 
+ TARGETDIR = target
+ OBJDIR = obj
+@@ -36,10 +36,10 @@
+ 
+ OBJ= $(REDWOOD_OBJ) 
+ 
+-#default: lib tags cplib
+-default: lib
++default: lib cplib
++#default: lib
+ 
+-MAINAPPDIR = /home/jykim/vidan4110_test/vidan4110_api_test
++MAINAPPDIR = ../../lgdtv_vidan4110_test_pgm
+ MAINAPPLIBDIR = $(MAINAPPDIR)/lib
+ MAINAPPINCDIR = $(MAINAPPDIR)/include
+ 

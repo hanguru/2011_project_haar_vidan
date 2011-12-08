@@ -1,0 +1,714 @@
+#include <sys/time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <pthread.h>
+
+#include "redwood_api.h"
+
+extern void usleep(int usec);
+
+enum user_command_code
+{
+    //{{{
+	COMMAND_VIDEO_START = 0,
+	COMMAND_VIDEO_STOP,
+	COMMAND_AUDIO_START,
+	COMMAND_AUDIO_STOP,
+	COMMAND_AVATA_START,
+	COMMAND_ZOOM0,
+	COMMAND_ZOOM1,
+	COMMAND_ZOOM2,
+	COMMAND_ZOOM3,
+	COMMAND_CON0,
+	COMMAND_CON10,
+	COMMAND_BRI,
+	COMMAND_BRI0,
+	COMMAND_BRI10,
+	COMMAND_SAT0,
+	COMMAND_SAT10,
+	COMMAND_SHA,
+	COMMAND_HUE0,
+	COMMAND_HUE10,
+	COMMAND_GAM0,
+	COMMAND_GAM10,
+	COMMAND_WHI,
+	COMMAND_EXP,
+	COMMAND_FW_UP,
+	COMMAND_QUIT,
+	COMMAND_VIDEO_START_VGA,
+	COMMAND_VIDEO_START_QVGA,
+	COMMAND_VIDEO_START_QQVGA,
+	COMMAND_VIDEO_START_HD,
+	COMMAND_VIDEO_KEY_FRAME_REQUEST,
+	COMMAND_VIDEO_FRAMERATE,
+	COMMAND_VIDEO_KEY_BITRATE,
+	COMMAND_AUDIO_START_12KHZ,
+	COMMAND_AUDIO_START_16KHZ,
+	COMMAND_AUDIO_AGC_GAIN,
+	COMMAND_FIRMWARE_VERSION_CHECK,
+	COMMAND_UNDEFINED = 99,
+    //}}}
+};
+
+FILE *jpegout = NULL;
+FILE *h264out = NULL;
+FILE *pcmout = NULL;
+
+void h264FileWrite(int dataLen, char *dataBuf);
+void jpegFileWrite(int dataLen, char *dataBuf);
+void pcmFileWrite(int dataLen, char *dataBuf);
+
+pthread_t timer_thread;
+pthread_t command_thread;
+static void *timer_thread_func(void *ptr);
+static void *command_thread_func(void *ptr);
+static int command_process(char *command_str);
+static int getArgument(void);
+int h264cnt = 0;
+int h264bps = 0;
+int jpegcnt = 0;
+int jpegbps = 0; //kik
+int pcmcnt = 0;
+int isH264First = 1;
+
+int terminate_thread = 0;
+
+int main(void)
+{
+	int ret;
+
+	redwood_system_init(); 
+
+	redwood_pcm_callback_register((void*)pcmFileWrite);
+	redwood_h264_callback_register((void*)h264FileWrite);
+	redwood_jpeg_callback_register((void*)jpegFileWrite);
+
+	//Timer Thread Creation
+	ret = pthread_create(&timer_thread,
+						NULL,
+						timer_thread_func,
+						NULL);
+
+	//Timer Thread Creation
+	ret = pthread_create(&command_thread,
+						NULL,
+						command_thread_func,
+						NULL);
+
+
+	while(!terminate_thread)
+	{
+		usleep(10000000);
+	}
+
+	//redwood_audio_stop();
+	//redwood_video_stop();
+
+	redwood_system_exit(); 
+
+	return 0;
+}
+
+void h264FileWrite(int dataLen, char *dataBuf)
+{
+	//{{{
+    struct timeval tim;
+	double t1 = 0;
+	double t2 = 0;
+	//static int fileCnt = 0;
+	//char filename[256] = {0};
+	//FILE *h264eachfile;
+	//sprintf(filename, "h264%06d.h264", fileCnt++);
+	//h264eachfile = fopen(filename, "wb");
+	//fwrite(dataBuf, 1, dataLen, h264eachfile);
+	//fclose(h264eachfile);
+	
+	if ( dataLen > 36 * 1024 )
+		printf("h264len : %d\n", dataLen);
+
+	if ( h264out )
+	{
+
+		gettimeofday(&tim, NULL);
+		t1 = (tim.tv_sec * 1000) + (tim.tv_usec/1000.0);
+		fwrite(dataBuf, 1, dataLen, h264out);
+		fflush(h264out);
+		gettimeofday(&tim, NULL);
+		t2 = (tim.tv_sec * 1000) + (tim.tv_usec/1000.0);
+		if ( t2 - t1 > 100 )
+			printf(">>>>>>>>>>>>>>>>>>>>>h264 file write time : %.3lf ms\n", t2 - t1);
+	}
+	if ( isH264First )
+	{
+		isH264First = 0;
+		redwood_keyframe_request();
+	}
+	h264cnt++;
+	h264bps += (dataLen * 8);
+    //}}}
+}
+
+void jpegFileWrite(int dataLen, char *dataBuf)
+{
+	//{{{
+    struct timeval tim;
+	double t1 = 0;
+	double t2 = 0;
+	if ( jpegout )
+	{
+		gettimeofday(&tim, NULL);
+		t1 = (tim.tv_sec * 1000) + (tim.tv_usec/1000.0);
+		//fwrite(dataBuf, 1, dataLen, jpegout);
+		//fflush(jpegout);
+		gettimeofday(&tim, NULL);
+		t2 = (tim.tv_sec * 1000) + (tim.tv_usec/1000.0);
+		if ( t2 - t1 > 100 )
+			printf(">>>>>>>>>>>>>>>>>>>>>JPEG file write time : %.3lf ms\n", t2 - t1);
+	}
+	jpegcnt++;
+	jpegbps += (dataLen * 8);
+	//printf("jpeg:%d", jpegcnt);
+	//}}}
+}
+
+void pcmFileWrite(int dataLen, char *dataBuf)
+{
+    //{{{
+	struct timeval tim;
+	double t1 = 0;
+	double t2 = 0;
+	//if ( dataLen == 5120 )
+	//	printf("datalen 5120\n");
+	if ( pcmout )
+	{
+		gettimeofday(&tim, NULL);
+		t1 = (tim.tv_sec * 1000) + (tim.tv_usec/1000.0);
+		//fwrite(dataBuf, 1, dataLen, pcmout);
+		//fflush(pcmout);
+		//if ( dataLen != 2560 )
+		//printf("pcmlen : %d\n", dataLen);
+		gettimeofday(&tim, NULL);
+		t2 = (tim.tv_sec * 1000) + (tim.tv_usec/1000.0);
+		if ( t2 - t1 > 100 )
+			printf(">>>>>>>>>>>>>>>>>>>>>pcm file write time : %.3lf ms\n", t2 - t1);
+	}
+	pcmcnt++;
+    //}}}
+}
+
+static void *timer_thread_func(void *ptr)
+{
+    //{{{
+	while(1)
+	{
+		if ( h264cnt > 0 )
+			printf("h264 frame Rate:%d fps, %d kbps\n", h264cnt, h264bps/1024);
+		if ( jpegcnt > 0 )
+			//kik -printf("jpeg frame Rate:%d fps\n", jpegcnt);
+			printf("jpeg frame Rate:%d fps, %d kbps\n", jpegcnt, jpegbps/1024);
+		if ( pcmcnt > 0 )
+			printf("pcm frame cnt:%d\n", pcmcnt);
+		h264cnt = 0;
+		h264bps = 0;
+		jpegcnt = 0;
+		jpegbps = 0; //kik+
+		usleep(1000000);
+	}
+    //}}}
+}
+
+static void *command_thread_func(void *ptr)
+{
+    //{{{
+	video_param_t vParm;
+	audio_param_t aParm;
+	char strVersion[64] = {0};
+	char command_buffer[256] = {0};
+	int ch = 0;
+	int command_buffer_idx = 0;
+	int command_op = 0;
+	int value = 0;
+
+	while(1)
+	{
+		memset(command_buffer, 0, 256); //command buffer clear
+		command_buffer_idx = 0; 
+
+		while ( (ch = getchar()) != 0x0a ) //enter key
+		{
+      		command_buffer[command_buffer_idx++] = ch;
+			usleep(1000);
+		}	
+		
+		command_op = command_process(command_buffer);
+
+		switch(command_op)
+		{
+			case COMMAND_VIDEO_START:
+				if ( jpegout == NULL )
+					jpegout = fopen("result.mjpg", "wb");
+				if ( h264out == NULL )
+					h264out = fopen("result.h264", "wb");
+				h264cnt = 0;
+				h264bps = 0;
+				jpegcnt = 0;
+				jpegbps = 0; //kik+
+
+				vParm.res_width = 640;
+				vParm.res_height = 320;
+				vParm.jpeg_quality = 80;
+				vParm.isFlipEnable = 0;
+				vParm.isAvataCaptureMode = 0;
+				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_15;
+				vParm.qp = 29;
+				vParm.maxbitrate = 1500 * 1024;
+				vParm.iframeinterval = 0;
+				isH264First = 1;
+				redwood_video_start(&vParm); 
+				break;
+			case COMMAND_VIDEO_START_VGA:
+
+				if ( jpegout == NULL )
+					jpegout = fopen("result.mjpg", "wb");
+				if ( h264out == NULL )
+					h264out = fopen("result.h264", "wb");
+				h264cnt = 0;
+				h264bps = 0;
+				jpegcnt = 0;
+				jpegbps = 0; //kik+
+
+				vParm.res_width = 640;
+//				vParm.res_height = 320;
+				vParm.res_height = 480;
+				vParm.jpeg_quality = 80;
+				vParm.isFlipEnable = 0;
+				vParm.isAvataCaptureMode = 0;
+//				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_6;
+				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_15;
+				vParm.qp = 39;
+//				vParm.maxbitrate = 1300 * 1024;
+				vParm.maxbitrate = 2000 * 1024;
+				vParm.iframeinterval = 0;
+				isH264First = 1;
+
+			//	redwood_framerate_set(30);
+				redwood_framerate_set(40);
+				redwood_bitrate_set(1500*1024);
+
+				redwood_video_start(&vParm); 
+				break;
+			case COMMAND_VIDEO_START_QVGA:
+
+				if ( jpegout == NULL )
+					jpegout = fopen("result.mjpg", "wb");
+				if ( h264out == NULL )
+					h264out = fopen("result.h264", "wb");
+				h264cnt = 0;
+				h264bps = 0;
+				jpegcnt = 0;
+				jpegbps = 0; //kik+
+
+				vParm.res_width = 320;
+				vParm.res_height = 240;
+				vParm.jpeg_quality = 80;
+				vParm.isFlipEnable = 0;
+				vParm.isAvataCaptureMode = 0;
+				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_15;
+				vParm.qp = 29;
+				vParm.maxbitrate = 1500 * 1024;
+				vParm.iframeinterval = 0;
+				isH264First = 1;
+				redwood_video_start(&vParm); 
+				break;
+			case COMMAND_VIDEO_START_QQVGA:
+
+				if ( jpegout == NULL )
+					jpegout = fopen("result.mjpg", "wb");
+				if ( h264out == NULL )
+					h264out = fopen("result.h264", "wb");
+				h264cnt = 0;
+				h264bps = 0;
+				jpegcnt = 0;
+				jpegbps = 0; //kik+
+
+				vParm.res_width = 160;
+				vParm.res_height = 120;
+				vParm.jpeg_quality = 80;
+				vParm.isFlipEnable = 0;
+				vParm.isAvataCaptureMode = 0;
+				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_15;
+				vParm.qp = 29;
+				vParm.maxbitrate = 1500 * 1024;
+				vParm.iframeinterval = 0;
+				isH264First = 1;
+				redwood_video_start(&vParm); 
+				break;
+			case COMMAND_VIDEO_START_HD:
+
+				if ( jpegout == NULL )
+					jpegout = fopen("result.mjpg", "wb");
+				if ( h264out == NULL )
+					h264out = fopen("result.h264", "wb");
+				h264cnt = 0;
+				h264bps = 0;
+				jpegcnt = 0;
+				jpegbps = 0; //kik+
+
+				vParm.res_width = 1280;
+				vParm.res_height = 720;
+				vParm.jpeg_quality = 80;
+				vParm.isFlipEnable = 0;
+				vParm.isAvataCaptureMode = 0;
+				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_15;
+				vParm.qp = 29;
+				vParm.maxbitrate = 1500 * 1024;
+				vParm.iframeinterval = 0;
+				isH264First = 1;
+				redwood_video_start(&vParm); 
+				break;
+
+			case COMMAND_VIDEO_STOP:
+				redwood_video_stop(); 
+				if ( jpegout )
+				{
+					fclose(jpegout);
+					jpegout = NULL;
+				}
+				if ( h264out )
+				{
+					fclose(h264out);
+					h264out = NULL;
+				}
+				break;
+			case COMMAND_AUDIO_START:
+				if ( pcmout == NULL )
+					pcmout = fopen("result.pcm", "wb");
+				pcmcnt = 0;
+				aParm.audio_freq_type = AUDIO_FREQ_16KHZ;
+				redwood_audio_start(&aParm); 
+				break;
+			case COMMAND_AUDIO_START_12KHZ:
+				if ( pcmout == NULL )
+					pcmout = fopen("result.pcm", "wb");
+				pcmcnt = 0;
+				aParm.audio_freq_type = AUDIO_FREQ_12KHZ;
+				redwood_audio_start(&aParm); 
+				break;
+			case COMMAND_AUDIO_START_16KHZ:
+				if ( pcmout == NULL )
+					pcmout = fopen("result.pcm", "wb");
+				pcmcnt = 0;
+				aParm.audio_freq_type = AUDIO_FREQ_16KHZ;
+				redwood_audio_start(&aParm); 
+				break;
+			case COMMAND_AUDIO_AGC_GAIN:
+				redwood_agc_gain_set(0xD3, 0x24, 0xC1, 0xD3, 0x24, 0xC1); 
+				printf("AGC gain\n");
+				break;
+			case COMMAND_AUDIO_STOP:
+				redwood_audio_stop(); 
+				if ( pcmout )
+				{
+					fclose( pcmout);
+					pcmout = NULL;
+				}
+				pcmcnt = 0;
+				break;
+			case COMMAND_AVATA_START:
+				if ( jpegout == NULL )
+					jpegout = fopen("result.mjpg", "wb");
+				if ( h264out == NULL )
+					h264out = fopen("result.h264", "wb");
+				h264cnt = 0;
+				h264bps = 0;
+				jpegcnt = 0;
+				jpegbps = 0; //kik+
+				vParm.res_width = 240;
+				vParm.res_height = 240;
+				vParm.jpeg_quality = 80;
+				vParm.isFlipEnable = 0;
+				vParm.isAvataCaptureMode = 1;
+				vParm.jpeg_fps_level = JPEG_FPS_LEVEL_15;
+				vParm.qp = 29;
+				vParm.maxbitrate = 1500 * 1024;
+				vParm.iframeinterval = 0;
+				redwood_video_start(&vParm); 
+				break;
+			case COMMAND_ZOOM0:
+				redwood_video_zoom_set(0);
+				break;
+			case COMMAND_ZOOM1:
+				redwood_video_zoom_set(1);
+				break;
+			case COMMAND_ZOOM2:
+				redwood_video_zoom_set(2);
+				break;
+			case COMMAND_ZOOM3:
+				redwood_video_zoom_set(3);
+				break;
+			case COMMAND_CON0:
+				redwood_video_contrast_set(0);
+				break;
+			case COMMAND_CON10:
+				redwood_video_contrast_set(10);
+				break;
+			case COMMAND_BRI:
+				value = getArgument();
+				printf("Brightness argument : %d\n", value); 
+				redwood_video_brightness_set(value);
+				break;
+			case COMMAND_WHI:
+				value = getArgument();
+				printf("White Balance argument : %d\n", value); 
+				redwood_video_white_balance_set(value);
+				break;
+			case COMMAND_EXP:
+				value = getArgument();
+				printf("Exposure argument : %d\n", value); 
+				redwood_video_exposure_set(value);
+				break;
+			case COMMAND_BRI0:
+				redwood_video_brightness_set(0);
+				break;
+			case COMMAND_BRI10:
+				redwood_video_brightness_set(10);
+				break;
+			case COMMAND_SAT0:
+				redwood_video_saturation_set(0);
+				break;
+			case COMMAND_SAT10:
+				redwood_video_saturation_set(10);
+				break;
+			case COMMAND_SHA:
+				value = getArgument();
+				printf("Sharpness argument : %d\n", value); 
+				redwood_video_sharpness_set(value);
+				break;
+			case COMMAND_HUE0:
+				redwood_video_hue_set(0);
+				break;
+			case COMMAND_HUE10:
+				redwood_video_hue_set(10);
+				break;
+			case COMMAND_GAM0:
+				redwood_video_gamma_set(0);
+				break;
+			case COMMAND_GAM10:
+				redwood_video_gamma_set(10);
+				break;
+			case COMMAND_FW_UP:
+				redwood_firmware_upgrade("./romfile");
+                printf("FW_UP_FINISHED\n");
+				break;
+			case COMMAND_VIDEO_KEY_FRAME_REQUEST:
+				redwood_keyframe_request();
+				break;
+			case COMMAND_VIDEO_FRAMERATE:
+				value = getArgument();
+				printf("Framerate  : %d fps\n", value); 
+				redwood_framerate_set(value);
+				break;
+			case COMMAND_VIDEO_KEY_BITRATE:
+				value = getArgument();
+				printf("Bitrate  : %dkbps\n", value); 
+				redwood_bitrate_set(value*1024);
+				break;
+			case COMMAND_FIRMWARE_VERSION_CHECK:
+				redwood_firmware_version_check(strVersion);
+				printf("FW Ver. : %s\n", strVersion);
+				break;
+			case COMMAND_QUIT:
+				break;
+			case COMMAND_UNDEFINED:
+			default:
+				printf("Command Undefined : [%s]\n", command_buffer);
+		}
+		usleep(100000);
+	}
+    //}}}
+}
+
+static int command_process(char *command_str)
+{
+    //{{{
+	int ret;
+
+	if ( !strcmp(command_str, "vj") )
+	{
+		ret = COMMAND_VIDEO_START;
+	}
+	else if ( !strcmp(command_str, "vv") )
+	{
+		ret = COMMAND_VIDEO_START_VGA;
+	}
+	else if ( !strcmp(command_str, "vq") )
+	{
+		ret = COMMAND_VIDEO_START_QVGA;
+	}
+	else if ( !strcmp(command_str, "vqq") )
+	{
+		ret = COMMAND_VIDEO_START_QQVGA;
+	}
+	else if ( !strcmp(command_str, "vh") )
+	{
+		ret = COMMAND_VIDEO_START_HD;
+	}
+	else if ( !strcmp(command_str, "vk") )
+	{
+		ret = COMMAND_VIDEO_STOP;
+	}
+	else if ( !strcmp(command_str, "aj") )
+	{
+		ret = COMMAND_AUDIO_START;
+	}
+	else if ( !strcmp(command_str, "a12") )
+	{
+		ret = COMMAND_AUDIO_START_12KHZ;
+	}
+	else if ( !strcmp(command_str, "a16") )
+	{
+		ret = COMMAND_AUDIO_START_16KHZ;
+	}
+	else if ( !strcmp(command_str, "agc") )
+	{
+		ret = COMMAND_AUDIO_AGC_GAIN;
+	}
+	else if ( !strcmp(command_str, "fv") )
+	{
+		ret = COMMAND_FIRMWARE_VERSION_CHECK;
+	}
+	else if ( !strcmp(command_str, "ak") )
+	{
+		ret = COMMAND_AUDIO_STOP;
+	}
+	else if ( !strcmp(command_str, "avj") )
+	{
+		ret = COMMAND_AVATA_START;
+	}
+	else if ( !strcmp(command_str, "zoom0") )
+	{
+		ret = COMMAND_ZOOM0;
+	}
+	else if ( !strcmp(command_str, "zoom1") )
+	{
+		ret = COMMAND_ZOOM1;
+	}
+	else if ( !strcmp(command_str, "zoom2") )
+	{
+		ret = COMMAND_ZOOM2;
+	}
+	else if ( !strcmp(command_str, "zoom3") )
+	{
+		ret = COMMAND_ZOOM3;
+	}
+	else if ( !strcmp(command_str, "con0") )
+	{
+		ret = COMMAND_CON0;
+	}
+	else if ( !strcmp(command_str, "con10") )
+	{
+		ret = COMMAND_CON10;
+	}
+	else if ( !strcmp(command_str, "bri") )
+	{
+		ret = COMMAND_BRI;
+	}
+	else if ( !strcmp(command_str, "whi") )
+	{
+		ret = COMMAND_WHI;
+	}
+	else if ( !strcmp(command_str, "exp") )
+	{
+		ret = COMMAND_EXP;
+	}
+	else if ( !strcmp(command_str, "bri0") )
+	{
+		ret = COMMAND_BRI0;
+	}
+	else if ( !strcmp(command_str, "bri10") )
+	{
+		ret = COMMAND_BRI10;
+	}
+	else if ( !strcmp(command_str, "sat0") )
+	{
+		ret = COMMAND_SAT0;
+	}
+	else if ( !strcmp(command_str, "sat10") )
+	{
+		ret = COMMAND_SAT10;
+	}
+	else if ( !strcmp(command_str, "sha") )
+	{
+		ret = COMMAND_SHA;
+	}
+	else if ( !strcmp(command_str, "hue0") )
+	{
+		ret = COMMAND_HUE0;
+	}
+	else if ( !strcmp(command_str, "hue10") )
+	{
+		ret = COMMAND_HUE10;
+	}
+	else if ( !strcmp(command_str, "gam0") )
+	{
+		ret = COMMAND_GAM0;
+	}
+	else if ( !strcmp(command_str, "gam10") )
+	{
+		ret = COMMAND_GAM10;
+	}
+	else if ( !strcmp(command_str, "fu") )
+	{
+		ret = COMMAND_FW_UP;
+	}
+	else if ( !strcmp(command_str, "k") )
+	{
+		ret = COMMAND_VIDEO_KEY_FRAME_REQUEST;
+	}
+	else if ( !strcmp(command_str, "fr") )
+	{
+		ret = COMMAND_VIDEO_FRAMERATE;
+	}
+	else if ( !strcmp(command_str, "br") )
+	{
+		ret = COMMAND_VIDEO_KEY_BITRATE;
+	}
+
+	else if ( !strcmp(command_str, "quit") )
+	{
+		ret = COMMAND_BRI10;
+	}
+	else
+	{
+		ret = COMMAND_UNDEFINED;
+	}
+
+	return ret;
+    //}}}
+}
+
+static int getArgument(void)
+{
+    //{{{
+	int ret = 0;
+	char command_buffer[256] = {0};
+	int ch = 0;
+	int command_buffer_idx = 0;
+	memset(command_buffer, 0, 256); //command buffer clear
+	command_buffer_idx = 0; 
+	while ( (ch = getchar()) != 0x0a ) //enter key
+	{
+   	command_buffer[command_buffer_idx++] = ch;
+		usleep(1000);
+	}	
+
+	ret = atoi(command_buffer);
+	return ret;
+    //}}}
+}
+
+
+
+
+

@@ -1,0 +1,1463 @@
+Archive member included because of file (symbol)
+
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+                              common/crt0.o (__exit)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o)
+                              src/parsetcommon.o (_free)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o) (__malloc_r)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memcpy.o)
+                              jpeg/jcparam.o (_memcpy)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memset.o)
+                              jpeg/jcapimin.o (_memset)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mlock.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o) (___malloc_lock)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o) (__sbrk_r)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(errno.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o) (___errno)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(freer.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o) (__free_r)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o) (__impure_ptr)
+../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+                              ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o) (_errno)
+../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+                              internal/slice.o (___extendsfdf2)
+../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+                              src/haar_vidan.o (___truncdfsf2)
+../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+                              ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o) (___muldi3)
+../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+                              ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o) (___lshrdi3)
+../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)
+                              ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o) (___ashldi3)
+
+Allocating common symbols
+Common symbol       size              file
+
+_OSTaskCtr          0x1               ucos/os_core.o
+_PMADPictureC1      0x4               internal/ratectl.o
+_ReferenceMAD       0x20              internal/ratectl.o
+_UpperBound1        0x4               internal/ratectl.o
+_AGC_gain_flicker   0x4               src/fpga.o
+_m_rgQp             0x20              internal/ratectl.o
+_main_stack         0x4000            common/main.o
+_img                0x368             internal/lencod.o
+_cam_cb_offset_aligned_temp
+                    0x4               src/configfile.o
+_neighbourcrPixel   0x10              src/rdopt.o
+_LowerBound         0x4               internal/ratectl.o
+_pPCMINStreamSem    0x4               internal/usb.o
+_bits_per_frame     0x4               internal/lencod.o
+_OSTCBCur           0x4               ucos/os_core.o
+_less_than_orig_target_cnt
+                    0x4               internal/lencod.o
+_OSCtxSwCtr         0x4               ucos/os_core.o
+_pcminDualStreamBuf
+                    0x60              internal/commandProcess.o
+_pH264StreamSem     0x4               internal/usb.o
+_bits_to_go         0x4               internal/lencod.o
+_OSTCBList          0x4               ucos/os_core.o
+_JPEG_SIZE_W        0x4               internal/jpeg_run_isp.o
+_Pm_X2              0x4               internal/ratectl.o
+_f2                 0x4               src/haar_features.o
+_input              0xa0              internal/lencod.o
+_AEC_gain           0x4               src/fpga.o
+_PMADPictureC2      0x4               internal/ratectl.o
+_OSTCBHighRdy       0x4               ucos/os_core.o
+_neighbourcbPixel   0x10              src/rdopt.o
+_R                  0x4               internal/ratectl.o
+_PreviousFrameMAD   0x4               internal/ratectl.o
+_pStartSem          0x4               internal/lencod.o
+_qp_delta           0x4               internal/slice.o
+_h264DualStreamBuf  0x18              internal/commandProcess.o
+_CurrentFrameMAD    0x4               internal/ratectl.o
+_OSTickStepState    0x1               ucos/os_core.o
+_OSRdyTbl           0x1               ucos/os_core.o
+_ba_redzone_size    0x4               ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+_tmp_u              0x4               internal/lencod.o
+_OSTaskIdleStk      0x100             ucos/os_core.o
+_end_of_last_slice  0x4               internal/slice.o
+_OSEventTbl         0x1b8             ucos/os_core.o
+_AGC_gain           0x4               src/fpga.o
+_m_Qc               0x4               internal/ratectl.o
+_OSTCBFreeList      0x4               ucos/os_core.o
+_br_div_fr          0x4               internal/ratectl.o
+_slice_no           0x4               internal/slice.o
+_Pm_X1              0x4               internal/ratectl.o
+_active_pps         0x4               internal/lencod.o
+_PPreHeader         0x4               internal/ratectl.o
+_OSRdyGrp           0x1               ucos/os_core.o
+_CurrentBufferFullness
+                    0x4               internal/ratectl.o
+_end_of_slice       0x4               internal/slice.o
+_T                  0x4               internal/ratectl.o
+_DeltaP             0x4               internal/ratectl.o
+_OSPrioCur          0x1               ucos/os_core.o
+_cam_cr_offset_aligned_temp
+                    0x4               src/configfile.o
+_OSIdleCtr          0x4               ucos/os_core.o
+_haar_integral_base
+                    0x4               src/haar_features.o
+_pJPEGStreamSem     0x4               internal/usb.o
+_OSRunning          0x1               ucos/os_core.o
+_OSPrioHighRdy      0x1               ucos/os_core.o
+_listXsize          0x4               src/mbuffer.o
+_OSTCBPrioTbl       0x1c              ucos/os_core.o
+_TargetBufferLevel  0x4               internal/ratectl.o
+_result_size_byte_until_5
+                    0x2               internal/slice.o
+_OutputReg          0xc4              src/rdopt.o
+_f                  0x4               src/haar_features.o
+_OSLockNesting      0x1               ucos/os_core.o
+_OSTime             0x4               ucos/os_core.o
+_max_bit_rate_value
+                    0x4               internal/lencod.o
+_Np                 0x4               internal/ratectl.o
+_f1                 0x4               src/haar_features.o
+_tmp_v              0x4               internal/lencod.o
+_OSTCBTbl           0x180             ucos/os_core.o
+_OSIntNesting       0x1               ucos/os_core.o
+_PictureMAD         0x20              internal/ratectl.o
+_errno              0x4               ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+_ba_abi_level       0x4               ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+_f3                 0x4               src/haar_features.o
+_SystemInfo         0xf0              internal/usb.o
+_pEventExternalTaskDone
+                    0x4               common/main.o
+_m_rgRp             0x20              internal/ratectl.o
+_jpegDualStreamBuf  0x18              internal/commandProcess.o
+_OSEventFreeList    0x4               ucos/os_core.o
+_neighbourlumaPixel
+                    0x28              src/rdopt.o
+_AEC_gain_flicker   0x4               src/fpga.o
+_tmp_y              0x4               internal/lencod.o
+_active_sps         0x4               internal/lencod.o
+_JPEG_SIZE_H        0x4               internal/jpeg_run_isp.o
+_PAverageQp         0x4               internal/ratectl.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+vectors          0x00000000         0x00002000
+vectors2         0xf10a4000         0x00000080
+rom              0xf10a4080         0x0002ff80
+ram              0x02008000         0x00018000
+internalrom      0x02000000         0x00008000
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD common/cpm.o
+LOAD common/main.o
+LOAD common/sdram_control.o
+LOAD common/tube.o
+LOAD interface/AIC3101.o
+LOAD interface/firmware_upload.o
+LOAD interface/flash_operation.o
+LOAD interface/gpio.o
+LOAD interface/i2c_operation.o
+LOAD interface/sensor_set.o
+LOAD interface/spi_operation.o
+LOAD interface/uart.o
+LOAD jpeg/jcapimin.o
+LOAD jpeg/jcapistd.o
+LOAD jpeg/jccoefct.o
+LOAD jpeg/jcinit.o
+LOAD jpeg/jcmarker.o
+LOAD jpeg/jcmaster.o
+LOAD jpeg/jcomapi.o
+LOAD jpeg/jcparam.o
+LOAD jpeg/jmemmgr.o
+LOAD jpeg/jmemnobs.o
+LOAD jpeg/jutils.o
+LOAD src/configfile.o
+LOAD src/filehandle.o
+LOAD src/fpga.o
+LOAD src/haar_features.o
+LOAD src/haar_haar.o
+LOAD src/haar_integral_image.o
+LOAD src/haar_vidan.o
+LOAD src/loopFilter.o
+LOAD src/macroblock.o
+LOAD src/mb_access.o
+LOAD src/mbuffer.o
+LOAD src/memalloc.o
+LOAD src/parset.o
+LOAD src/parsetcommon.o
+LOAD src/rdopt.o
+LOAD common/crt0.o
+LOAD ucos/divsi3.o
+LOAD ucos/interrupt.o
+LOAD ucos/memset.o
+LOAD ucos/or1200s.o
+LOAD internal/commandProcess.o
+LOAD internal/header.o
+LOAD internal/i2s.o
+LOAD internal/image.o
+LOAD internal/jpeg_run_isp.o
+LOAD internal/lencod.o
+LOAD internal/ratectl.o
+LOAD internal/slice.o
+LOAD internal/usb.o
+LOAD internal/vlc.o
+LOAD ucos/interrupt_handler.o
+LOAD ucos/interrupt_handler_gpio.o
+LOAD ucos/or1200c.o
+LOAD ucos/os_core.o
+LOAD ucos/os_dbg_r.o
+LOAD ucos/os_flag.o
+LOAD ucos/os_mbox.o
+LOAD ucos/os_mem.o
+LOAD ucos/os_mutex.o
+LOAD ucos/os_q.o
+LOAD ucos/os_sem.o
+LOAD ucos/os_task.o
+LOAD ucos/os_time.o
+LOAD ucos/stack_chk.o
+START GROUP
+LOAD ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a
+LOAD ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a
+END GROUP
+                0x00000000                __DYNAMIC = 0x0
+                0x0201fffc                PROVIDE (_stack, 0x201fffc)
+                0x0201fffc                PROVIDE (__stack, 0x201fffc)
+
+.vectors        0x00000000     0x1f15
+ *(.vectors)
+ .vectors       0x00000000     0x1f15 common/crt0.o
+
+.vectors2       0xf10a4000       0x71
+ *(.vectors2)
+ .vectors2      0xf10a4000       0x71 common/crt0.o
+
+.internalrom    0x02000000     0x77e4
+ *(.internalrom)
+ .internalrom   0x02000000      0x197 ucos/divsi3.o
+                0x020000f2                _umodsi3
+                0x02000079                _divsi3
+                0x0200018f                ___divbyzero
+                0x02000142                _udivsi3
+                0x02000000                _modsi3
+ .internalrom   0x02000197      0x141 ucos/interrupt.o
+                0x02000197                _ExtISR
+ .internalrom   0x020002d8       0x59 ucos/memset.o
+ .internalrom   0x02000331      0x3fa ucos/or1200s.o
+                0x02000472                _OSCtxSw
+                0x02000331                _OSTickISR
+                0x0200067b                _OSStartHighRdy
+                0x020005bf                _OSIntCtxSw
+ *fill*         0x0200072b        0x1 00
+ .internalrom   0x0200072c      0xe50 internal/commandProcess.o
+                0x02000937                _internalRegisterWrite
+                0x020012b1                _hifRegisterWrite
+                0x020009d2                _firmware_version_check
+                0x02000ee1                _streamGetH264Length
+                0x020008dd                _hifRegisterBitSet
+                0x02000cb1                _commandVideoStop
+                0x02000af6                _commandAudioStop
+                0x0200075b                _streamGetJpegLength
+                0x0200097f                _internalRegisterRead
+                0x02000a6c                _firmware_sdram_write
+                0x02000b72                _hifRegisterRead
+                0x0200072c                _setCommandResponse
+                0x02000cfd                _commandVideoStart
+                0x02000a0d                _firmware_upload
+                0x02000bf4                _commandAudioStart
+                0x020011a2                _i2cMasterWrite
+                0x0200135d                _commandProcess
+                0x02000a1c                _firmware_set_length
+                0x02000894                _hifRegisterBitReset
+                0x02001224                _i2cMasterRead
+                0x02000d6a                _streamGetPCMInLength
+                0x02000ab2                _videoApiSet
+ .internalrom   0x0200157c      0x18b internal/header.o
+                0x0200159d                _SODBtoRBSP
+                0x02001591                _bitstream_init
+                0x0200157c                _get_picture_type
+                0x020015b7                _GenerateHeader
+                0x0200160c                _SliceHeader
+ .internalrom   0x02001707      0x21e internal/i2s.o
+                0x02001780                _init_i2s
+                0x02001732                _I2S_DataSize
+                0x020017cf                _i2s_interrupt_handler
+                0x0200171b                _I2S_RegClr
+                0x02001756                _I2S_IrqCnt
+                0x02001707                _I2S_RegSet
+ .internalrom   0x02001925      0x1d9 internal/image.o
+                0x0200198b                _encode_one_frame
+                0x02001925                _frame_picture
+ .internalrom   0x02001afe      0x270 internal/jpeg_run_isp.o
+                0x02001b2e                _jpeg_run
+                0x02001b40                _jpeg_header_write
+                0x02001b58                _jpeg_api
+                0x02001baa                _jpeg_parameter_set
+                0x02001afe                _jpeg_end_write
+                0x02001bb6                _jpeg_init
+ .internalrom   0x02001d6e     0x1350 internal/lencod.o
+                0x02002622                _SetImgType
+                0x020025e8                _jpeg_task
+                0x02001d6e                _set_img_size_to_dmac
+                0x02001d95                _free_img
+                0x020026ff                _init_img
+                0x020026dd                _malloc_picture
+                0x020026b9                _free_global_buffers
+                0x02002458                _SetupForDoubleBuffer
+                0x020026ce                _free_picture
+                0x020027f0                _lencod
+                0x02001d98                _simpleRateControl
+                0x02002444                _AlignOffsetAddr
+ .internalrom   0x020030be       0x7d internal/ratectl.o
+                0x020030be                _rc_update_pict
+                0x02003105                _rc_update_pict_frame
+ .internalrom   0x0200313b     0x1761 internal/slice.o
+                0x0200313b                _compute_slice_argument
+                0x020033a0                _start_slice
+                0x0200324f                _simpleLineRateControl
+                0x020033fc                _encode_one_slice
+                0x02003389                _free_slice_list
+ .internalrom   0x0200489c      0xdc0 internal/usb.o
+                0x02004a32                _ep5_nack_toggle
+                0x02004a47                _process_ep5
+                0x020049b7                _ep2_nack
+                0x02004bb2                _init_video_streamBuf
+                0x02004a02                _ep4_nack_toggle
+                0x020049a2                _ep2_nack_toggle
+                0x02004984                _process_ep1
+                0x02004938                _ms50_delay
+                0x020049d2                _ep3_nack_toggle
+                0x0200506b                _clr_stall_endpoint
+                0x020049e7                _ep3_nack
+                0x0200496f                _ep1_nack_toggle
+                0x02004f38                _process_ep3
+                0x02004d31                _process_ep4
+                0x0200495a                _ep0_nack_toggle
+                0x02004c39                _init_audio_streamBuf
+                0x02004a80                _ep_clear_dpid
+                0x0200512f                _process_ep0
+                0x0200558d                _usb_interrupt_handler
+                0x02004afb                _disable_device_mode
+                0x02004a65                _ep5_nack
+                0x02004a17                _ep4_nack
+                0x02004c80                _ptc_interrupt_handler
+                0x0200550b                _process_ep2
+                0x0200489c                _init_device_mode_noncontrol
+                0x02004ca7                _wdt_interrupt_handler
+                0x02004949                _ms10_delay
+                0x020055cf                _init_usb
+ .internalrom   0x0200565c      0x1ed internal/vlc.o
+                0x0200578b                _u_1
+                0x02005802                _symbol2vlc
+                0x02005697                _se_linfo
+                0x0200565c                _ue_linfo
+                0x020057a4                _writeSyntaxElement_UVLC
+                0x0200574a                _writeSyntaxElement2Buf_UVLC
+                0x0200576b                _writeSyntaxElement_fixed
+                0x0200582d                _writeSyntaxElement_VLC
+                0x020057c5                _se_v
+                0x02005706                _OutputStreamController
+                0x02005774                _u_v
+                0x02005739                _writeUVLC2buffer
+                0x020057df                _ue_v
+                0x020057f9                _writeSyntaxElement2Buf_Fixed
+                0x020056e2                _symbol2uvlc
+ .internalrom   0x02005849      0x1f1 ucos/interrupt_handler.o
+                0x020058b4                _OpenRiscTimerRestart
+                0x02005941                _IntDisable
+                0x02005849                _OpenRiscEnableTimerInt
+                0x0200595e                _IntHandler
+                0x020058f4                _OpenRiscEnableInt
+                0x020058d7                _OpenRiscTimerPause
+                0x02005927                _IntEnable
+                0x02005883                _OpenRiscDisableTimerInt
+                0x0200590c                _OpenRiscDisableInt
+ .internalrom   0x02005a3a      0x472 ucos/interrupt_handler_gpio.o
+                0x02005a3a                _GPIOIntDisable
+                0x02005e6c                _GPIOIntEnable
+                0x02005a5b                _IntHandlerGPIO
+ .internalrom   0x02005eac       0x6a ucos/or1200c.o
+                0x02005ee1                _OSTaskStkInit
+                0x02005ede                _OSTCBInitHook
+                0x02005eb2                _OSTimeTickHook
+                0x02005eaf                _OSTaskIdleHook
+                0x02005ed5                _OSTaskStatHook
+                0x02005ed8                _OSTaskCreateHook
+                0x02005eac                _OSInitHookBegin
+                0x02005ed2                _OSDebugInit
+                0x02005ecf                _OSInitHookEnd
+                0x02005edb                _OSTaskDelHook
+ .internalrom   0x02005f16      0x925 ucos/os_core.o
+                0x0200636b                _OS_TCBInit
+                0x02005f79                _OSVersion
+                0x020060db                _OS_MemClr
+                0x0200601c                _OS_EventTaskWait
+                0x02005f37                _OSSchedLock
+                0x02005f83                _OS_EventTaskRdy
+                0x0200607f                _OS_EventTO
+                0x020060ef                _OS_MemCopy
+                0x02006108                _OS_Sched
+                0x020061a1                _OSSchedUnlock
+                0x020064e6                _OSTimeTick
+                0x020062ba                _OS_StrLen
+                0x020066f5                _OSInit
+                0x020062d6                _OSEventNameSet
+                0x020064ac                _OS_TaskIdle
+                0x02006240                _OSEventNameGet
+                0x02006215                _OS_StrCopy
+                0x02005f80                _OS_Dummy
+                0x020065df                _OSStart
+                0x020060d2                _OS_EventWaitListInit
+                0x0200663f                _OSIntExit
+                0x02005f16                _OSIntEnter
+ .internalrom   0x0200683b        0x0 ucos/os_dbg_r.o
+ .internalrom   0x0200683b        0x0 ucos/os_flag.o
+ .internalrom   0x0200683b        0x0 ucos/os_mbox.o
+ .internalrom   0x0200683b        0x0 ucos/os_mem.o
+ .internalrom   0x0200683b        0x0 ucos/os_mutex.o
+ .internalrom   0x0200683b        0x0 ucos/os_q.o
+ .internalrom   0x0200683b      0x39b ucos/os_sem.o
+                0x02006913                _OSSemPost
+                0x020068c1                _OSSemSet
+                0x0200683b                _OSSemAccept
+                0x02006b71                _OSSemCreate
+                0x0200687a                _OSSemQuery
+                0x0200698e                _OSSemDel
+                0x02006a8d                _OSSemPend
+ .internalrom   0x02006bd6      0x9dd ucos/os_task.o
+                0x02006bd6                _OSTaskDelReq
+                0x02006f81                _OSTaskChangePrio
+                0x020073f8                _OSTaskCreateExt
+                0x02006d54                _OSTaskQuery
+                0x02006eb4                _OSTaskResume
+                0x020070f7                _OSTaskNameSet
+                0x02006c7c                _OSTaskStkChk
+                0x02006dd8                _OSTaskSuspend
+                0x020074e2                _OSTaskCreate
+                0x02006d38                _OS_TaskStkClr
+                0x020071b2                _OSTaskNameGet
+                0x02007255                _OSTaskDel
+ .internalrom   0x020075b3      0x220 ucos/os_time.o
+                0x02007607                _OSTimeDlyResume
+                0x020075dd                _OSTimeSet
+                0x020075b3                _OSTimeGet
+                0x020076dd                _OSTimeDly
+                0x02007749                _OSTimeDlyHMSM
+ .internalrom   0x020077d3       0x11 ucos/stack_chk.o
+                0x020077d3                _stkChk
+
+.text           0xf10a4080     0xf7c3
+                0xf10a4080                stext = .
+                0xf10a4080                _stext = .
+ common/crt0.o(.text)
+ .text          0xf10a4080      0x188 common/crt0.o
+                0xf10a4150                default_exception_handler
+                0xf10a4084                _start
+ *(.text)
+ .text          0xf10a4208       0x1b common/cpm.o
+                0xf10a4208                _cpm_set_reg
+ *fill*         0xf10a4223        0x1 00
+ .text          0xf10a4224      0x37c common/main.o
+                0xf10a427f                _uart_baud_rate
+                0xf10a4305                _main_task
+                0xf10a4224                _calulate_system_clock
+                0xf10a4513                _MainTaskCreate
+                0xf10a445e                _InterruptControl
+                0xf10a452f                _main
+ .text          0xf10a45a0      0x134 common/sdram_control.o
+                0xf10a45a0                _SDRAM_init
+ .text          0xf10a46d4        0x0 common/tube.o
+ .text          0xf10a46d4      0x21a interface/AIC3101.o
+                0xf10a4787                _AIC3101Init
+                0xf10a476e                _AIC3101InputGain
+                0xf10a46f1                _AIC3101InputSelect
+                0xf10a4752                _AIC3101OutputAttenuation
+                0xf10a46d4                _AIC3101_RSET
+ *fill*         0xf10a48ee        0x2 00
+ .text          0xf10a48f0      0x310 interface/firmware_upload.o
+                0xf10a4929                _firmwareSetLength
+                0xf10a48f0                _firmwareSdramWrite
+                0xf10a493a                _firmwareVersionCheck
+                0xf10a4994                _firmwareUpload
+ .text          0xf10a4c00      0x629 interface/flash_operation.o
+                0xf10a4c85                _flash_protect
+                0xf10a4c00                _flash_read_register
+                0xf10a4d4f                _flash_erase_one_sector
+                0xf10a4d88                _flash_read
+                0xf10a4c1e                _flash_wip_wait
+                0xf10a4deb                _flash_avata_mode_check
+                0xf10a4ca6                _flash_read_one_page
+                0xf10a50d8                _flash_write_initial_sdramc1_register
+                0xf10a4c97                _flash_unprotect
+                0xf10a4fa1                _flash_write_initial_sdramc2_register
+                0xf10a4c5f                _flash_write_register
+                0xf10a4c44                _flash_write_enable
+                0xf10a4e1d                _flash_write
+                0xf10a4cf8                _flash_write_one_page
+ .text          0xf10a5229       0x6a interface/gpio.o
+                0xf10a5246                _GPIOSetOutput
+                0xf10a525b                _GPIOSetHigh
+                0xf10a5282                _readGPIO
+                0xf10a5229                _GPIOInit
+                0xf10a526d                _GPIOSetLow
+                0xf10a5234                _GPIOSetInput
+ .text          0xf10a5293      0x197 interface/i2c_operation.o
+                0xf10a52cd                _i2c_write
+                0xf10a538a                _i2c_read
+                0xf10a52bd                _WaitCycles
+                0xf10a5293                _i2c_init
+ *fill*         0xf10a542a        0x2 00
+ .text          0xf10a542c     0x9d04 interface/sensor_set.o
+                0xf10a542c                _initialSensorI2CSet
+                0xf10a5466                _videoApiPowerlinefreqSet
+                0xf10a6210                _videoAPICheck
+                0xf10a5dcd                _videoApiSharpnessSet
+                0xf10a54da                _videoApiExposureSet
+                0xf10a636a                _zoomControl
+                0xf10a5fb9                _videoApiBrightnessSet
+                0xf10a5ed3                _videoApiSaturationSet
+                0xf10a5c67                _videoApiHueSet
+                0xf10a57cb                _videoApiGammaSet
+                0xf10a5614                _videoApiWhitebalanceSet
+                0xf10aa66b                _sensorSetToHD
+                0xf10a60b2                _videoApiContrastSet
+                0xf10acd0a                _sensorSetToVGA
+                0xf10a6178                _videoApiControl
+ .text          0xf10af130       0xb1 interface/spi_operation.o
+                0xf10af130                _spi_close
+                0xf10af141                _spi_write
+                0xf10af1a5                _spi_open
+ .text          0xf10af1e1      0x16c interface/uart.o
+                0xf10af1ed                _uart_init_param
+                0xf10af2a2                _uart_printInt
+                0xf10af243                _uart_putc
+                0xf10af1e1                _IsCharInUART
+                0xf10af283                _uart_print
+                0xf10af26b                _uart_getc
+ .text          0xf10af34d       0x9c jpeg/jcapimin.o
+                0xf10af34d                _jpeg_suppress_tables
+                0xf10af3aa                _jpeg_CreateCompress
+                0xf10af38a                _jpeg_finish_compress
+ .text          0xf10af3e9       0x29 jpeg/jcapistd.o
+                0xf10af3e9                _jpeg_start_compress
+ .text          0xf10af412      0x14f jpeg/jccoefct.o
+                0xf10af520                _jinit_c_coef_controller
+                0xf10af451                _compress_data
+                0xf10af412                _start_pass_coef
+ .text          0xf10af561       0x1e jpeg/jcinit.o
+                0xf10af561                _jinit_compress_master
+ .text          0xf10af57f      0x2f8 jpeg/jcmarker.o
+                0xf10af6c3                _write_frame_header
+                0xf10af7e0                _write_scan_header
+                0xf10af642                _write_file_header
+ .text          0xf10af877      0x204 jpeg/jcmaster.o
+                0xf10afa2d                _prepare_for_pass
+                0xf10af940                _jinit_c_master_control
+                0xf10afa11                _pass_startup
+                0xf10af908                _finish_pass_master
+ .text          0xf10afa7b       0x48 jpeg/jcomapi.o
+                0xf10afab1                _jpeg_alloc_quant_table
+                0xf10afa7b                _jpeg_abort
+                0xf10afa9d                _jpeg_alloc_huff_table
+                0xf10afa97                _jpeg_destroy
+ .text          0xf10afac3      0x29d jpeg/jcparam.o
+                0xf10afc7e                _jpeg_set_linear_quality
+                0xf10afcc0                _jpeg_set_defaults
+                0xf10afb4a                _jpeg_default_colorspace
+                0xf10afac3                _jpeg_quality_scaling
+                0xf10afaf0                _jpeg_set_colorspace
+                0xf10afcaa                _jpeg_set_quality
+                0xf10afbaa                _jpeg_add_quant_table
+ .text          0xf10afd60       0x18 jpeg/jmemmgr.o
+                0xf10afd6c                _alloc_small
+                0xf10afd60                _alloc_large
+ .text          0xf10afd78       0x2a jpeg/jmemnobs.o
+                0xf10afd78                _jpeg_get_small
+ .text          0xf10afda2        0x0 jpeg/jutils.o
+ .text          0xf10afda2       0x5c src/configfile.o
+                0xf10afdd0                _SampleRateX2
+                0xf10afda2                _SampleRateX
+                0xf10afdb9                _SampleRateY
+                0xf10afde7                _SampleRateY2
+ .text          0xf10afdfe       0x31 src/filehandle.o
+                0xf10afdfe                _start_sequence
+ .text          0xf10afe2f      0x780 src/fpga.o
+                0xf10afec4                _my_c2_addr_gen_by_index
+                0xf10aff49                _my_c2_addr_gen
+                0xf10b000b                _InitFPGA1
+                0xf10affc8                _my_draw_rect
+                0xf10afe2f                _Configure_via_SW
+ .text          0xf10b05af      0x661 src/haar_features.o
+                0xf10b0a09                _features_get_by_num
+                0xf10b0a41                _features_set_current
+                0xf10b0629                _features_get_total
+ .text          0xf10b0c10       0xa6 src/haar_haar.o
+                0xf10b0c10                _haar_compute_feature
+ .text          0xf10b0cb6      0x1a9 src/haar_integral_image.o
+                0xf10b0cb6                _integral_image_new
+ .text          0xf10b0e5f      0x24d src/haar_vidan.o
+                0xf10b0e5f                _haar_draw_rect
+                0xf10b0f52                _Haar_ViDan
+ .text          0xf10b10ac       0x51 src/loopFilter.o
+                0xf10b10e8                _Deblock_Target_Addr
+                0xf10b10ac                _Deblock_Control1
+                0xf10b10d6                _Deblock_Dimension
+                0xf10b10c1                _Deblock_Control2
+ .text          0xf10b10fd      0x28f src/macroblock.o
+                0xf10b130e                _write_one_macroblock_p_wrapup
+                0xf10b1236                _write_one_macroblock_i
+                0xf10b1359                _terminate_frame
+                0xf10b11a6                _write_one_macroblock_setting1
+                0xf10b1233                _write_one_macroblock_setting3
+                0xf10b12f6                _write_one_macroblock_p
+                0xf10b10fd                _set_MB_parameters
+                0xf10b1175                _start_macroblock
+                0xf10b11b1                _write_one_macroblock_setting2
+                0xf10b1296                _write_one_macroblock
+                0xf10b113c                _set_nextMB_parameters
+ .text          0xf10b138c       0xa6 src/mb_access.o
+                0xf10b13fe                _get_mb_block_pos
+                0xf10b1413                _get_mb_pos
+                0xf10b138c                _mb_is_available
+                0xf10b13ae                _CheckAvailabilityOfNeighbors
+ .text          0xf10b1432       0x16 src/mbuffer.o
+                0xf10b1432                _init_lists
+ .text          0xf10b1448        0x3 src/memalloc.o
+                0xf10b1448                _no_mem_exit
+ .text          0xf10b144b      0x186 src/parset.o
+                0xf10b158a                _FreeParameterSets
+                0xf10b1487                _GeneratePic_parameter_set_rbsp
+                0xf10b144b                _FillParameterSetStructures
+                0xf10b150b                _GenerateSeq_parameter_set_rbsp
+                0xf10b15a8                _GenerateParameterSets
+ .text          0xf10b15d1       0x61 src/parsetcommon.o
+                0xf10b15d1                _FreeSPS
+                0xf10b15e0                _FreePPS
+                0xf10b15ef                _AllocSPS
+                0xf10b1611                _AllocPPS
+ .text          0xf10b1632      0x234 src/rdopt.o
+                0xf10b1632                _encode_one_macroblock
+                0xf10b1763                _encode_one_macroblock_i
+ .text          0xf10b1866        0x0 ucos/divsi3.o
+ .text          0xf10b1866        0x0 ucos/interrupt.o
+ .text          0xf10b1866        0x0 ucos/memset.o
+ .text          0xf10b1866        0x0 ucos/or1200s.o
+ .text          0xf10b1866        0x0 internal/commandProcess.o
+ .text          0xf10b1866        0x0 internal/header.o
+ .text          0xf10b1866        0x0 internal/i2s.o
+ .text          0xf10b1866        0x0 internal/image.o
+ .text          0xf10b1866        0x0 internal/jpeg_run_isp.o
+ .text          0xf10b1866        0x0 internal/lencod.o
+ .text          0xf10b1866        0x0 internal/ratectl.o
+ .text          0xf10b1866        0x0 internal/slice.o
+ .text          0xf10b1866        0x0 internal/usb.o
+ .text          0xf10b1866        0x0 internal/vlc.o
+ .text          0xf10b1866        0x0 ucos/interrupt_handler.o
+ .text          0xf10b1866        0x0 ucos/interrupt_handler_gpio.o
+ .text          0xf10b1866        0x0 ucos/or1200c.o
+ .text          0xf10b1866        0x0 ucos/os_core.o
+ .text          0xf10b1866        0x0 ucos/os_dbg_r.o
+ .text          0xf10b1866        0x0 ucos/os_flag.o
+ .text          0xf10b1866        0x0 ucos/os_mbox.o
+ .text          0xf10b1866        0x0 ucos/os_mem.o
+ .text          0xf10b1866        0x0 ucos/os_mutex.o
+ .text          0xf10b1866        0x0 ucos/os_q.o
+ .text          0xf10b1866        0x0 ucos/os_sem.o
+ .text          0xf10b1866        0x0 ucos/os_task.o
+ .text          0xf10b1866        0x0 ucos/os_time.o
+ .text          0xf10b1866        0x0 ucos/stack_chk.o
+ .text          0xf10b1866      0x1f5 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+                0xf10b1866                __exit
+                0xf10b186a                __getpid
+                0xf10b19ba                __write
+                0xf10b1a3a                __read
+                0xf10b188c                __unlink
+                0xf10b18aa                ___unlink
+                0xf10b199d                __open
+                0xf10b197e                _isatty
+                0xf10b1a57                __kill
+                0xf10b1960                __isatty
+                0xf10b18ac                __link
+                0xf10b18ca                __creat
+                0xf10b18e8                __time
+                0xf10b1942                __lseek
+                0xf10b1980                __close
+                0xf10b1906                __times
+                0xf10b1924                __fstat
+                0xf10b186f                __fork
+                0xf10b19d7                __sbrk
+ .text          0xf10b1a5b       0x1c ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o)
+                0xf10b1a5b                _free
+                0xf10b1a69                _malloc
+ .text          0xf10b1a77      0x4ff ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o)
+                0xf10b1a77                __malloc_r
+ .text          0xf10b1f76       0x17 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memcpy.o)
+                0xf10b1f76                _memcpy
+ .text          0xf10b1f8d       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memset.o)
+                0xf10b1f8d                _memset
+ .text          0xf10b1f9f        0x6 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mlock.o)
+                0xf10b1f9f                ___malloc_lock
+                0xf10b1fa2                ___malloc_unlock
+ .text          0xf10b1fa5       0x26 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o)
+                0xf10b1fa5                __sbrk_r
+ .text          0xf10b1fcb        0x9 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(errno.o)
+                0xf10b1fcb                ___errno
+ .text          0xf10b1fd4      0x28f ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(freer.o)
+                0xf10b1fd4                __malloc_trim_r
+                0xf10b2094                __free_r
+ .text          0xf10b2263        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+ .text          0xf10b2263       0xf4 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+                0xf10b22a6                _cleanup_glue
+                0xf10b2263                __wrapup_reent
+                0xf10b22c3                __reclaim_reent
+ .text          0xf10b2357      0x8a2 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+                0xf10b2a4f                ___fixsfsi
+                0xf10b28e5                ___subsf3
+                0xf10b2ab0                ___unordsf2
+                0xf10b25cc                ___cmpsf2
+                0xf10b25a3                ___extendsfdf2
+                0xf10b2357                ___fpcmp_parts_f
+                0xf10b291e                ___addsf3
+                0xf10b2bc1                ___nesf2
+                0xf10b27c1                ___mulsf3
+                0xf10b2b89                ___gtsf2
+                0xf10b2ae1                ___lesf2
+                0xf10b2952                ___floatunsisf
+                0xf10b2a17                ___eqsf2
+                0xf10b26f2                ___divsf3
+                0xf10b2b51                ___gesf2
+                0xf10b2519                ___unpack_f
+                0xf10b26cb                ___negsf2
+                0xf10b26bd                ___make_fp
+                0xf10b2b19                ___ltsf2
+                0xf10b25f2                ___pack_f
+                0xf10b29b6                ___floatsisf
+ .text          0xf10b2bf9      0xb93 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+                0xf10b3243                ___muldf3
+                0xf10b2f1d                ___truncdfsf2
+                0xf10b3674                ___ledf2
+                0xf10b35de                ___fixdfsi
+                0xf10b343b                ___subdf3
+                0xf10b3754                ___nedf2
+                0xf10b353c                ___floatsidf
+                0xf10b34a8                ___floatunsidf
+                0xf10b36e4                ___gedf2
+                0xf10b371c                ___gtdf2
+                0xf10b2e59                ___unpack_d
+                0xf10b2bf9                ___fpcmp_parts_d
+                0xf10b2f7d                ___pack_d
+                0xf10b3643                ___unorddf2
+                0xf10b30f0                ___negdf2
+                0xf10b35a6                ___eqdf2
+                0xf10b2f57                ___cmpdf2
+                0xf10b3114                ___divdf3
+                0xf10b30df                ___make_dp
+                0xf10b36ac                ___ltdf2
+                0xf10b3474                ___adddf3
+ .text          0xf10b378c       0x55 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+                0xf10b378c                ___muldi3
+ .text          0xf10b37e1       0x29 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+                0xf10b37e1                ___lshrdi3
+ .text          0xf10b380a       0x29 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)
+                0xf10b380a                ___ashldi3
+                0xf10b3833                _etext = .
+                0xf10b3833                __CTOR_LIST__ = .
+                0xf10b3833        0x4 LONG 0x0 (((__CTOR_END__ - __CTOR_LIST__) / 0x4) - 0x2)
+ *(.ctors)
+                0xf10b3837        0x4 LONG 0x0
+                0xf10b383b                __CTOR_END__ = .
+                0xf10b383b                __DTOR_LIST__ = .
+                0xf10b383b        0x4 LONG 0x0 (((__DTOR_END__ - __DTOR_LIST__) / 0x4) - 0x2)
+ *(.dtors)
+                0xf10b383f        0x4 LONG 0x0
+                0xf10b3843                __DTOR_END__ = .
+ *(.lit)
+ *(.shdata)
+                0xf10b3843                _endtext = .
+
+.rodata         0xf10b3848      0x550
+ *(.rodata)
+ .rodata        0xf10b3848       0x10 interface/uart.o
+ .rodata        0xf10b3858      0x3a0 jpeg/jcparam.o
+ .rodata        0xf10b3bf8       0x50 jpeg/jutils.o
+                0xf10b3bf8                _jpeg_natural_order
+ .rodata        0xf10b3c48       0x18 internal/ratectl.o
+                0xf10b3c48                _QP2QSTEP
+ .rodata        0xf10b3c60      0x108 ucos/os_core.o
+                0xf10b3c60                _OSMapTbl
+                0xf10b3c68                _OSUnMapTbl
+ .rodata        0xf10b3d68        0x2 ucos/os_dbg_r.o
+                0xf10b3d68                _OSDebugEn
+ *fill*         0xf10b3d6a        0x2 00
+ .rodata        0xf10b3d6c        0x4 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+                0xf10b3d6c                __global_impure_ptr
+ .rodata        0xf10b3d70       0x10 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+                0xf10b3d70                ___thenan_sf
+ .rodata        0xf10b3d80       0x18 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+                0xf10b3d80                ___thenan_df
+
+.rodata.cst4
+ *(.rodata.cst4)
+
+.rodata.str1.1  0xf10b3d98      0x244
+ *(.rodata.str1.1)
+ .rodata.str1.1
+                0xf10b3d98       0x6d interface/firmware_upload.o
+                                 0x74 (size before relaxing)
+ .rodata.str1.1
+                0xf10b3e05       0x8a interface/flash_operation.o
+ .rodata.str1.1
+                0xf10b3e8f       0x3a interface/sensor_set.o
+ .rodata.str1.1
+                0xf10b3ec9       0x1c src/parsetcommon.o
+ .rodata.str1.1
+                0xf10b3ee5        0x8 internal/i2s.o
+                                  0xd (size before relaxing)
+ .rodata.str1.1
+                0xf10b3eed       0x48 internal/lencod.o
+                                 0x5e (size before relaxing)
+ .rodata.str1.1
+                0xf10b3f35       0x7d internal/usb.o
+                                 0x8d (size before relaxing)
+ .rodata.str1.1
+                0xf10b3fb2        0xf ucos/interrupt_handler.o
+ .rodata.str1.1
+                0xf10b3fc1       0x19 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+ .rodata.str1.1
+                0xf10b3fda        0x2 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+
+.shbss
+ *(.shbss)
+
+.talias         0xf10b3fdc        0x0
+                0xf10b3fdc                _RO_Limit = ALIGN (0x4)
+
+.data           0x02008000      0x980
+                0x02008000                sdata = .
+                0x02008000                _sdata = .
+ *(.data)
+ .data          0x02008000        0x0 common/cpm.o
+ .data          0x02008000        0x0 common/main.o
+ .data          0x02008000        0x0 common/sdram_control.o
+ .data          0x02008000        0x0 common/tube.o
+ .data          0x02008000        0x0 interface/AIC3101.o
+ .data          0x02008000        0x0 interface/firmware_upload.o
+ .data          0x02008000        0x0 interface/flash_operation.o
+ .data          0x02008000        0x0 interface/gpio.o
+ .data          0x02008000        0x0 interface/i2c_operation.o
+ .data          0x02008000        0x0 interface/sensor_set.o
+ .data          0x02008000        0x0 interface/spi_operation.o
+ .data          0x02008000        0x0 interface/uart.o
+ .data          0x02008000        0x0 jpeg/jcapimin.o
+ .data          0x02008000        0x0 jpeg/jcapistd.o
+ .data          0x02008000        0x0 jpeg/jccoefct.o
+ .data          0x02008000        0x0 jpeg/jcinit.o
+ .data          0x02008000        0x0 jpeg/jcmarker.o
+ .data          0x02008000        0x0 jpeg/jcmaster.o
+ .data          0x02008000        0x0 jpeg/jcomapi.o
+ .data          0x02008000        0x0 jpeg/jcparam.o
+ .data          0x02008000        0x0 jpeg/jmemmgr.o
+ .data          0x02008000        0x0 jpeg/jmemnobs.o
+ .data          0x02008000        0x0 jpeg/jutils.o
+ .data          0x02008000        0x0 src/configfile.o
+ .data          0x02008000        0x0 src/filehandle.o
+ .data          0x02008000        0x0 src/fpga.o
+ .data          0x02008000        0x4 src/haar_features.o
+                0x02008000                _Haar_total
+ .data          0x02008004        0x0 src/haar_haar.o
+ .data          0x02008004        0x0 src/haar_integral_image.o
+ .data          0x02008004        0x0 src/haar_vidan.o
+ .data          0x02008004        0x0 src/loopFilter.o
+ .data          0x02008004        0x0 src/macroblock.o
+ .data          0x02008004        0x0 src/mb_access.o
+ .data          0x02008004        0x0 src/mbuffer.o
+ .data          0x02008004        0x0 src/memalloc.o
+ .data          0x02008004        0x0 src/parset.o
+ .data          0x02008004        0x0 src/parsetcommon.o
+ .data          0x02008004       0x80 src/rdopt.o
+                0x02008044                _sbyindex
+                0x02008004                _sbxindex
+ .data          0x02008084        0x0 common/crt0.o
+ .data          0x02008084        0x0 ucos/divsi3.o
+ .data          0x02008084        0x0 ucos/interrupt.o
+ .data          0x02008084        0x0 ucos/memset.o
+ .data          0x02008084        0x0 ucos/or1200s.o
+ .data          0x02008084        0x4 internal/commandProcess.o
+                0x02008084                _dummy_k
+ .data          0x02008088        0x0 internal/header.o
+ .data          0x02008088        0x0 internal/i2s.o
+ .data          0x02008088        0x0 internal/image.o
+ .data          0x02008088        0x0 internal/jpeg_run_isp.o
+ .data          0x02008088        0x0 internal/lencod.o
+ .data          0x02008088        0x0 internal/ratectl.o
+ .data          0x02008088        0x0 internal/slice.o
+ .data          0x02008088       0xe0 internal/usb.o
+                0x02008154                _sString3
+                0x0200809c                _sConfigDescriptor
+                0x02008088                _sDeviceDescriptor
+                0x020080d4                _sQualifier
+                0x020080e4                _sString1
+                0x02008114                _sString2
+                0x020080e0                _sString0
+ .data          0x02008168        0x0 internal/vlc.o
+ .data          0x02008168        0x0 ucos/interrupt_handler.o
+ .data          0x02008168        0x0 ucos/interrupt_handler_gpio.o
+ .data          0x02008168        0x0 ucos/or1200c.o
+ .data          0x02008168        0x0 ucos/os_core.o
+ .data          0x02008168        0x0 ucos/os_dbg_r.o
+ .data          0x02008168        0x0 ucos/os_flag.o
+ .data          0x02008168        0x0 ucos/os_mbox.o
+ .data          0x02008168        0x0 ucos/os_mem.o
+ .data          0x02008168        0x0 ucos/os_mutex.o
+ .data          0x02008168        0x0 ucos/os_q.o
+ .data          0x02008168        0x0 ucos/os_sem.o
+ .data          0x02008168        0x0 ucos/os_task.o
+ .data          0x02008168        0x0 ucos/os_time.o
+ .data          0x02008168        0x0 ucos/stack_chk.o
+ .data          0x02008168        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+ .data          0x02008168        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o)
+ .data          0x02008168      0x410 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o)
+                0x02008168                ___malloc_av_
+                0x02008570                ___malloc_trim_threshold
+                0x02008574                ___malloc_sbrk_base
+ .data          0x02008578        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memcpy.o)
+ .data          0x02008578        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memset.o)
+ .data          0x02008578        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mlock.o)
+ .data          0x02008578        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o)
+ .data          0x02008578        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(errno.o)
+ .data          0x02008578        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(freer.o)
+ .data          0x02008578      0x408 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+                0x02008578                __impure_ptr
+ .data          0x02008980        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+ .data          0x02008980        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+ .data          0x02008980        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+ .data          0x02008980        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+ .data          0x02008980        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+ .data          0x02008980        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)
+                0x02008980                edata = .
+                0x02008980                _edata = .
+
+.end_mark       0x02008980        0x4
+ *(.end_mark)
+ .end_mark      0x02008980        0x4 common/crt0.o
+
+.rwlimit        0x02008984        0x0
+                0x02008984                _RW_Limit = ALIGN (0x4)
+
+.bss            0x02008984     0x4fc0
+                0x02008984                sbss = .
+                0x02008984                _sbss = .
+                0x02008988                __bss_start = ALIGN (0x8)
+                0x02008988                ___bss_start = ALIGN (0x8)
+ *(.bss)
+ .bss           0x02008984        0x0 common/cpm.o
+ .bss           0x02008984        0x1 common/main.o
+                0x02008984                _avata_capture_mode
+ .bss           0x02008985        0x0 common/sdram_control.o
+ .bss           0x02008985        0x0 common/tube.o
+ .bss           0x02008985        0x0 interface/AIC3101.o
+ *fill*         0x02008985        0x3 00
+ .bss           0x02008988       0x14 interface/firmware_upload.o
+                0x02008988                _romPageCnt
+ .bss           0x0200899c        0x0 interface/flash_operation.o
+ .bss           0x0200899c        0x0 interface/gpio.o
+ .bss           0x0200899c        0x0 interface/i2c_operation.o
+ .bss           0x0200899c        0x4 interface/sensor_set.o
+                0x0200899c                _isVideoPropertySet
+ .bss           0x020089a0      0x25c interface/spi_operation.o
+                0x020089a0                _spi_write_buf
+                0x02008bf8                _om_select_temp_variable
+                0x02008acc                _spi_read_buf
+ .bss           0x02008bfc        0x0 interface/uart.o
+ .bss           0x02008bfc        0x0 jpeg/jcapimin.o
+ .bss           0x02008bfc        0x0 jpeg/jcapistd.o
+ .bss           0x02008bfc        0x1 jpeg/jccoefct.o
+                0x02008bfc                _tick
+ .bss           0x02008bfd        0x0 jpeg/jcinit.o
+ .bss           0x02008bfd        0x0 jpeg/jcmarker.o
+ .bss           0x02008bfd        0x0 jpeg/jcmaster.o
+ .bss           0x02008bfd        0x0 jpeg/jcomapi.o
+ .bss           0x02008bfd        0x0 jpeg/jcparam.o
+ .bss           0x02008bfd        0x0 jpeg/jmemmgr.o
+ *fill*         0x02008bfd        0x3 00
+ .bss           0x02008c00        0x4 jpeg/jmemnobs.o
+                0x02008c00                _total_alloc_mem
+ .bss           0x02008c04        0x0 jpeg/jutils.o
+ .bss           0x02008c04        0x0 src/configfile.o
+ .bss           0x02008c04        0x0 src/filehandle.o
+ .bss           0x02008c04        0x0 src/fpga.o
+ .bss           0x02008c04        0x4 src/haar_features.o
+                0x02008c04                _Haar_init
+ .bss           0x02008c08        0x0 src/haar_haar.o
+ .bss           0x02008c08        0x0 src/haar_integral_image.o
+ .bss           0x02008c08        0x4 src/haar_vidan.o
+                0x02008c08                _matched_flag_debug
+ .bss           0x02008c0c        0x0 src/loopFilter.o
+ .bss           0x02008c0c        0x0 src/macroblock.o
+ .bss           0x02008c0c        0x0 src/mb_access.o
+ .bss           0x02008c0c        0x0 src/mbuffer.o
+ .bss           0x02008c0c        0x0 src/memalloc.o
+ .bss           0x02008c0c        0x0 src/parset.o
+ .bss           0x02008c0c        0x0 src/parsetcommon.o
+ .bss           0x02008c0c        0x0 src/rdopt.o
+ .bss           0x02008c0c        0x0 common/crt0.o
+ .bss           0x02008c0c        0x0 ucos/divsi3.o
+ .bss           0x02008c0c        0x0 ucos/interrupt.o
+ .bss           0x02008c0c        0x0 ucos/memset.o
+ .bss           0x02008c0c        0x0 ucos/or1200s.o
+ .bss           0x02008c0c       0x1c internal/commandProcess.o
+                0x02008c18                _command_audio_stop
+                0x02008c24                _isJpegDataExist
+                0x02008c0c                _command_video_start
+                0x02008c10                _command_video_stop
+                0x02008c14                _command_audio_start
+                0x02008c1c                _isVideoStarted
+                0x02008c20                _isAudioStarted
+ .bss           0x02008c28        0x0 internal/header.o
+ .bss           0x02008c28        0xc internal/i2s.o
+                0x02008c28                _i2s_int_enabled
+                0x02008c2c                _pcm_exist
+                0x02008c30                _lost_pcm_len
+ .bss           0x02008c34        0x4 internal/image.o
+                0x02008c34                _my_frame_num
+ .bss           0x02008c38        0x4 internal/jpeg_run_isp.o
+ .bss           0x02008c3c       0x34 internal/lencod.o
+                0x02008c40                _target_bit_rate
+                0x02008c5c                _diff_one_frame_size_byte_prev2
+                0x02008c48                _orig_target_one_frame_size_byte
+                0x02008c58                _diff_one_frame_size_byte_prev1
+                0x02008c4c                _diff_one_frame_size_byte
+                0x02008c54                _diff_four_frame_size_byte
+                0x02008c64                _diff_one_frame_size_byte_prev4
+                0x02008c44                _target_frame_rate
+                0x02008c50                _diff_two_frame_size_byte
+                0x02008c60                _diff_one_frame_size_byte_prev3
+                0x02008c3c                _target_one_frame_size_byte
+ .bss           0x02008c70        0x0 internal/ratectl.o
+ .bss           0x02008c70       0x18 internal/slice.o
+                0x02008c70                _random_temp
+                0x02008c84                _NAL_BIT_SIZE
+ .bss           0x02008c88        0xc internal/usb.o
+                0x02008c90                _isJPEGPend
+                0x02008c88                _get_status_from_host
+                0x02008c8c                _isH264Pend
+ .bss           0x02008c94        0x0 internal/vlc.o
+ .bss           0x02008c94        0x4 ucos/interrupt_handler.o
+                0x02008c94                _int_flag
+ .bss           0x02008c98        0x0 ucos/interrupt_handler_gpio.o
+ .bss           0x02008c98        0x0 ucos/or1200c.o
+ .bss           0x02008c98        0x0 ucos/os_core.o
+ .bss           0x02008c98        0x0 ucos/os_dbg_r.o
+ .bss           0x02008c98        0x0 ucos/os_flag.o
+ .bss           0x02008c98        0x0 ucos/os_mbox.o
+ .bss           0x02008c98        0x0 ucos/os_mem.o
+ .bss           0x02008c98        0x0 ucos/os_mutex.o
+ .bss           0x02008c98        0x0 ucos/os_q.o
+ .bss           0x02008c98        0x0 ucos/os_sem.o
+ .bss           0x02008c98        0x0 ucos/os_task.o
+ .bss           0x02008c98        0x0 ucos/os_time.o
+ .bss           0x02008c98        0x0 ucos/stack_chk.o
+ .bss           0x02008c98        0x4 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+ .bss           0x02008c9c        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o)
+ .bss           0x02008c9c       0x34 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o)
+                0x02008c9c                ___malloc_top_pad
+                0x02008ca8                ___malloc_current_mallinfo
+                0x02008ca0                ___malloc_max_sbrked_mem
+                0x02008ca4                ___malloc_max_total_mem
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memcpy.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memset.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mlock.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(errno.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(freer.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+ .bss           0x02008cd0        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)
+ *(COMMON)
+ COMMON         0x02008cd0     0x4000 common/main.o
+                0x02008cd0                _main_stack
+ COMMON         0x0200ccd0      0x10c src/rdopt.o
+                0x0200ccd0                _neighbourcrPixel
+                0x0200cce0                _neighbourcbPixel
+                0x0200ccf0                _OutputReg
+                0x0200cdb4                _neighbourlumaPixel
+ COMMON         0x0200cddc       0x90 internal/commandProcess.o
+                0x0200cddc                _pcminDualStreamBuf
+                0x0200ce3c                _h264DualStreamBuf
+                0x0200ce54                _jpegDualStreamBuf
+ COMMON         0x0200ce6c      0x408 internal/lencod.o
+                0x0200ce6c                _img
+                0x0200d1d4                _input
+ COMMON         0x0200d274       0x80 internal/ratectl.o
+                0x0200d274                _ReferenceMAD
+                0x0200d294                _m_rgQp
+                0x0200d2b4                _PictureMAD
+                0x0200d2d4                _m_rgRp
+ COMMON         0x0200d2f4       0xf0 internal/usb.o
+                0x0200d2f4                _SystemInfo
+ COMMON         0x0200d3e4      0x454 ucos/os_core.o
+                0x0200d3e4                _OSTaskIdleStk
+                0x0200d4e4                _OSEventTbl
+                0x0200d69c                _OSTCBPrioTbl
+                0x0200d6b8                _OSTCBTbl
+ *(.scommon)
+ .scommon       0x0200d838        0x4 common/main.o
+                0x0200d838                _pEventExternalTaskDone
+ .scommon       0x0200d83c        0x8 src/configfile.o
+                0x0200d83c                _cam_cb_offset_aligned_temp
+                0x0200d840                _cam_cr_offset_aligned_temp
+ .scommon       0x0200d844        0x0 src/filehandle.o
+ .scommon       0x0200d844       0x10 src/fpga.o
+                0x0200d844                _AGC_gain_flicker
+                0x0200d848                _AEC_gain
+                0x0200d84c                _AGC_gain
+                0x0200d850                _AEC_gain_flicker
+ .scommon       0x0200d854       0x14 src/haar_features.o
+                0x0200d854                _f2
+                0x0200d858                _haar_integral_base
+                0x0200d85c                _f
+                0x0200d860                _f1
+                0x0200d864                _f3
+ .scommon       0x0200d868        0x0 src/haar_haar.o
+ .scommon       0x0200d868        0x0 src/haar_integral_image.o
+ .scommon       0x0200d868        0x0 src/haar_vidan.o
+ .scommon       0x0200d868        0x0 src/loopFilter.o
+ .scommon       0x0200d868        0x0 src/macroblock.o
+ .scommon       0x0200d868        0x0 src/mb_access.o
+ .scommon       0x0200d868        0x4 src/mbuffer.o
+                0x0200d868                _listXsize
+ .scommon       0x0200d86c        0x0 src/parset.o
+ .scommon       0x0200d86c        0x0 src/parsetcommon.o
+ .scommon       0x0200d86c        0x0 src/rdopt.o
+ .scommon       0x0200d86c        0x0 internal/commandProcess.o
+ .scommon       0x0200d86c        0x0 internal/header.o
+ .scommon       0x0200d86c        0x0 internal/i2s.o
+ .scommon       0x0200d86c        0x0 internal/image.o
+ .scommon       0x0200d86c        0x8 internal/jpeg_run_isp.o
+                0x0200d86c                _JPEG_SIZE_W
+                0x0200d870                _JPEG_SIZE_H
+ .scommon       0x0200d874       0x28 internal/lencod.o
+                0x0200d874                _bits_per_frame
+                0x0200d878                _less_than_orig_target_cnt
+                0x0200d87c                _bits_to_go
+                0x0200d880                _pStartSem
+                0x0200d884                _tmp_u
+                0x0200d888                _active_pps
+                0x0200d88c                _max_bit_rate_value
+                0x0200d890                _tmp_v
+                0x0200d894                _tmp_y
+                0x0200d898                _active_sps
+ .scommon       0x0200d89c       0x48 internal/ratectl.o
+                0x0200d89c                _PMADPictureC1
+                0x0200d8a0                _UpperBound1
+                0x0200d8a4                _LowerBound
+                0x0200d8a8                _Pm_X2
+                0x0200d8ac                _PMADPictureC2
+                0x0200d8b0                _R
+                0x0200d8b4                _PreviousFrameMAD
+                0x0200d8b8                _CurrentFrameMAD
+                0x0200d8bc                _m_Qc
+                0x0200d8c0                _br_div_fr
+                0x0200d8c4                _Pm_X1
+                0x0200d8c8                _PPreHeader
+                0x0200d8cc                _CurrentBufferFullness
+                0x0200d8d0                _T
+                0x0200d8d4                _DeltaP
+                0x0200d8d8                _TargetBufferLevel
+                0x0200d8dc                _Np
+                0x0200d8e0                _PAverageQp
+ .scommon       0x0200d8e4       0x12 internal/slice.o
+                0x0200d8e4                _qp_delta
+                0x0200d8e8                _end_of_last_slice
+                0x0200d8ec                _slice_no
+                0x0200d8f0                _end_of_slice
+                0x0200d8f4                _result_size_byte_until_5
+ *fill*         0x0200d8f6        0x2 00
+ .scommon       0x0200d8f8        0xc internal/usb.o
+                0x0200d8f8                _pPCMINStreamSem
+                0x0200d8fc                _pH264StreamSem
+                0x0200d900                _pJPEGStreamSem
+ .scommon       0x0200d904        0x0 internal/vlc.o
+ .scommon       0x0200d904        0x0 ucos/interrupt_handler.o
+ .scommon       0x0200d904        0x0 ucos/interrupt_handler_gpio.o
+ .scommon       0x0200d904       0x34 ucos/os_core.o
+                0x0200d904                _OSTaskCtr
+                0x0200d908                _OSTCBCur
+                0x0200d90c                _OSCtxSwCtr
+                0x0200d910                _OSTCBList
+                0x0200d914                _OSTCBHighRdy
+                0x0200d918                _OSTickStepState
+                0x0200d919                _OSRdyTbl
+                0x0200d91c                _OSTCBFreeList
+                0x0200d920                _OSRdyGrp
+                0x0200d921                _OSPrioCur
+                0x0200d924                _OSIdleCtr
+                0x0200d928                _OSRunning
+                0x0200d929                _OSPrioHighRdy
+                0x0200d92a                _OSLockNesting
+                0x0200d92c                _OSTime
+                0x0200d930                _OSIntNesting
+                0x0200d934                _OSEventFreeList
+ .scommon       0x0200d938        0x0 ucos/stack_chk.o
+ .scommon       0x0200d938        0x4 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+                0x0200d938                _errno
+ .scommon       0x0200d93c        0x8 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+                0x0200d93c                _ba_redzone_size
+                0x0200d940                _ba_abi_level
+ .scommon       0x0200d944        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+ .scommon       0x0200d944        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+ .scommon       0x0200d944        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+ .scommon       0x0200d944        0x0 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)
+                0x0200d948                end = ALIGN (0x8)
+                0x0200d948                _end = ALIGN (0x8)
+                0x0200d948                __end = ALIGN (0x8)
+                0x0200d944                ebss = .
+                0x0200d944                _ebss = .
+
+.stab           0x00000000    0x2904c
+ *(.stab)
+ .stab          0x00000000      0x18c common/cpm.o
+ .stab          0x0000018c      0x8ac common/main.o
+                                0x8b8 (size before relaxing)
+ .stab          0x00000a38      0x168 common/sdram_control.o
+                                0x174 (size before relaxing)
+ .stab          0x00000ba0       0xe4 common/tube.o
+                                 0xf0 (size before relaxing)
+ .stab          0x00000c84      0x5b8 interface/AIC3101.o
+                                0x60c (size before relaxing)
+ .stab          0x0000123c      0x60c interface/firmware_upload.o
+                                0x618 (size before relaxing)
+ .stab          0x00001848      0xf48 interface/flash_operation.o
+                                0xf6c (size before relaxing)
+ .stab          0x00002790      0x318 interface/gpio.o
+                                0x324 (size before relaxing)
+ .stab          0x00002aa8      0x4a4 interface/i2c_operation.o
+                                0x4c8 (size before relaxing)
+ .stab          0x00002f4c     0x7068 interface/sensor_set.o
+                               0x70d4 (size before relaxing)
+ .stab          0x00009fb4      0x300 interface/spi_operation.o
+                                0x30c (size before relaxing)
+ .stab          0x0000a2b4      0x444 interface/uart.o
+                                0x450 (size before relaxing)
+ .stab          0x0000a6f8      0x690 jpeg/jcapimin.o
+                                0x7ec (size before relaxing)
+ .stab          0x0000ad88      0x3b4 jpeg/jcapistd.o
+                                0x474 (size before relaxing)
+ .stab          0x0000b13c      0x4e0 jpeg/jccoefct.o
+                                0x78c (size before relaxing)
+ .stab          0x0000b61c      0x1a4 jpeg/jcinit.o
+                                0x450 (size before relaxing)
+ .stab          0x0000b7c0      0x990 jpeg/jcmarker.o
+                                0xc3c (size before relaxing)
+ .stab          0x0000c150      0x798 jpeg/jcmaster.o
+                                0xa44 (size before relaxing)
+ .stab          0x0000c8e8      0x2e8 jpeg/jcomapi.o
+                                0x594 (size before relaxing)
+ .stab          0x0000cbd0      0x8b8 jpeg/jcparam.o
+                                0xcb4 (size before relaxing)
+ .stab          0x0000d488      0x240 jpeg/jmemmgr.o
+                                0x4ec (size before relaxing)
+ .stab          0x0000d6c8      0x234 jpeg/jmemnobs.o
+                                0x630 (size before relaxing)
+ .stab          0x0000d8fc      0x138 jpeg/jutils.o
+                                0x3e4 (size before relaxing)
+ .stab          0x0000da34      0x780 src/configfile.o
+                                0x8d0 (size before relaxing)
+ .stab          0x0000e1b4      0x21c src/filehandle.o
+                                0x738 (size before relaxing)
+ .stab          0x0000e3d0      0xb64 src/fpga.o
+                               0x10c8 (size before relaxing)
+ .stab          0x0000ef34      0x7e0 src/haar_features.o
+                                0x7ec (size before relaxing)
+ .stab          0x0000f714      0x264 src/haar_haar.o
+                                0x2dc (size before relaxing)
+ .stab          0x0000f978      0x300 src/haar_integral_image.o
+                                0x378 (size before relaxing)
+ .stab          0x0000fc78      0x57c src/haar_vidan.o
+                                0x5f4 (size before relaxing)
+ .stab          0x000101f4      0x378 src/loopFilter.o
+                                0x894 (size before relaxing)
+ .stab          0x0001056c      0x774 src/macroblock.o
+                                0xc90 (size before relaxing)
+ .stab          0x00010ce0      0x3cc src/mb_access.o
+                                0x8e8 (size before relaxing)
+ .stab          0x000110ac      0x228 src/mbuffer.o
+                                0x744 (size before relaxing)
+ .stab          0x000112d4      0x138 src/memalloc.o
+                                0x144 (size before relaxing)
+ .stab          0x0001140c      0x4ec src/parset.o
+                                0xa08 (size before relaxing)
+ .stab          0x000118f8      0x390 src/parsetcommon.o
+                                0x8ac (size before relaxing)
+ .stab          0x00011c88      0x540 src/rdopt.o
+                                0xa68 (size before relaxing)
+ .stab          0x000121c8     0x1cd4 internal/commandProcess.o
+                               0x1f44 (size before relaxing)
+ .stab          0x00013e9c      0x4f8 internal/header.o
+                                0xa14 (size before relaxing)
+ .stab          0x00014394      0x534 internal/i2s.o
+                                0x744 (size before relaxing)
+ .stab          0x000148c8      0x4c8 internal/image.o
+                                0x9e4 (size before relaxing)
+ .stab          0x00014d90      0x7b0 internal/jpeg_run_isp.o
+                                0xa8c (size before relaxing)
+ .stab          0x00015540     0x1e3c internal/lencod.o
+                               0x2748 (size before relaxing)
+ .stab          0x0001737c      0x450 internal/ratectl.o
+                                0x96c (size before relaxing)
+ .stab          0x000177cc     0x1ddc internal/slice.o
+                               0x2430 (size before relaxing)
+ .stab          0x000195a8     0x1ce0 internal/usb.o
+                               0x204c (size before relaxing)
+ .stab          0x0001b288      0xa5c internal/vlc.o
+                                0xf78 (size before relaxing)
+ .stab          0x0001bce4      0x6e4 ucos/interrupt_handler.o
+                                0x8c4 (size before relaxing)
+ .stab          0x0001c3c8      0x624 ucos/interrupt_handler_gpio.o
+                                0x750 (size before relaxing)
+ .stab          0x0001c9ec      0x624 ucos/or1200c.o
+                                0x798 (size before relaxing)
+ .stab          0x0001d010     0x1800 ucos/os_core.o
+                               0x1914 (size before relaxing)
+ .stab          0x0001e810      0x114 ucos/os_dbg_r.o
+                                0x228 (size before relaxing)
+ .stab          0x0001e924      0x108 ucos/os_flag.o
+                                0x21c (size before relaxing)
+ .stab          0x0001ea2c      0x108 ucos/os_mbox.o
+                                0x21c (size before relaxing)
+ .stab          0x0001eb34      0x108 ucos/os_mem.o
+                                0x21c (size before relaxing)
+ .stab          0x0001ec3c      0x108 ucos/os_mutex.o
+                                0x21c (size before relaxing)
+ .stab          0x0001ed44      0x108 ucos/os_q.o
+                                0x21c (size before relaxing)
+ .stab          0x0001ee4c      0xa2c ucos/os_sem.o
+                                0xb40 (size before relaxing)
+ .stab          0x0001f878     0x15fc ucos/os_task.o
+                               0x1710 (size before relaxing)
+ .stab          0x00020e74      0x624 ucos/os_time.o
+                                0x738 (size before relaxing)
+ .stab          0x00021498      0x1a4 ucos/stack_chk.o
+                                0x2c4 (size before relaxing)
+ .stab          0x0002163c      0xfd8 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+                                0xfe4 (size before relaxing)
+ .stab          0x00022614      0x330 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o)
+                                0x3fc (size before relaxing)
+ .stab          0x00022944      0xb40 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o)
+                                0xd8c (size before relaxing)
+ .stab          0x00023484      0x1b0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memcpy.o)
+                                0x1ec (size before relaxing)
+ .stab          0x00023634      0x204 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memset.o)
+                                0x33c (size before relaxing)
+ .stab          0x00023838      0x1d4 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mlock.o)
+                                0x33c (size before relaxing)
+ .stab          0x00023a0c      0x210 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o)
+                                0x5b8 (size before relaxing)
+ .stab          0x00023c1c      0x1a4 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(errno.o)
+                                0x354 (size before relaxing)
+ .stab          0x00023dc0      0x5a0 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(freer.o)
+                                0x984 (size before relaxing)
+ .stab          0x00024360      0x15c ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+                                0x2f4 (size before relaxing)
+ .stab          0x000244bc      0x498 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+                                0x63c (size before relaxing)
+ .stab          0x00024954     0x1f5c ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+                               0x1f68 (size before relaxing)
+ .stab          0x000268b0     0x1fc8 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+                               0x204c (size before relaxing)
+ .stab          0x00028878      0x36c ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+                                0x3fc (size before relaxing)
+ .stab          0x00028be4      0x234 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+                                0x3b4 (size before relaxing)
+ .stab          0x00028e18      0x234 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)
+                                0x3b4 (size before relaxing)
+
+.stabstr        0x00000000    0x195ad
+ *(.stabstr)
+ .stabstr       0x00000000    0x195ad common/cpm.o
+LOAD ../../../download/opt/ba-elf/ba-elf/lib/ba2/libm.a
+OUTPUT(vidan4100 elf32-ba)
+
+.comment        0x00000000      0x57c
+ .comment       0x00000000       0x12 common/cpm.o
+ .comment       0x00000012       0x12 common/main.o
+ .comment       0x00000024       0x12 common/sdram_control.o
+ .comment       0x00000036       0x12 common/tube.o
+ .comment       0x00000048       0x12 interface/AIC3101.o
+ .comment       0x0000005a       0x12 interface/firmware_upload.o
+ .comment       0x0000006c       0x12 interface/flash_operation.o
+ .comment       0x0000007e       0x12 interface/gpio.o
+ .comment       0x00000090       0x12 interface/i2c_operation.o
+ .comment       0x000000a2       0x12 interface/sensor_set.o
+ .comment       0x000000b4       0x12 interface/spi_operation.o
+ .comment       0x000000c6       0x12 interface/uart.o
+ .comment       0x000000d8       0x12 jpeg/jcapimin.o
+ .comment       0x000000ea       0x12 jpeg/jcapistd.o
+ .comment       0x000000fc       0x12 jpeg/jccoefct.o
+ .comment       0x0000010e       0x12 jpeg/jcinit.o
+ .comment       0x00000120       0x12 jpeg/jcmarker.o
+ .comment       0x00000132       0x12 jpeg/jcmaster.o
+ .comment       0x00000144       0x12 jpeg/jcomapi.o
+ .comment       0x00000156       0x12 jpeg/jcparam.o
+ .comment       0x00000168       0x12 jpeg/jmemmgr.o
+ .comment       0x0000017a       0x12 jpeg/jmemnobs.o
+ .comment       0x0000018c       0x12 jpeg/jutils.o
+ .comment       0x0000019e       0x12 src/configfile.o
+ .comment       0x000001b0       0x12 src/filehandle.o
+ .comment       0x000001c2       0x12 src/fpga.o
+ .comment       0x000001d4       0x12 src/haar_features.o
+ .comment       0x000001e6       0x12 src/haar_haar.o
+ .comment       0x000001f8       0x12 src/haar_integral_image.o
+ .comment       0x0000020a       0x12 src/haar_vidan.o
+ .comment       0x0000021c       0x12 src/loopFilter.o
+ .comment       0x0000022e       0x12 src/macroblock.o
+ .comment       0x00000240       0x12 src/mb_access.o
+ .comment       0x00000252       0x12 src/mbuffer.o
+ .comment       0x00000264       0x12 src/memalloc.o
+ .comment       0x00000276       0x12 src/parset.o
+ .comment       0x00000288       0x12 src/parsetcommon.o
+ .comment       0x0000029a       0x12 src/rdopt.o
+ .comment       0x000002ac       0x12 internal/commandProcess.o
+ .comment       0x000002be       0x12 internal/header.o
+ .comment       0x000002d0       0x12 internal/i2s.o
+ .comment       0x000002e2       0x12 internal/image.o
+ .comment       0x000002f4       0x12 internal/jpeg_run_isp.o
+ .comment       0x00000306       0x12 internal/lencod.o
+ .comment       0x00000318       0x12 internal/ratectl.o
+ .comment       0x0000032a       0x12 internal/slice.o
+ .comment       0x0000033c       0x12 internal/usb.o
+ .comment       0x0000034e       0x12 internal/vlc.o
+ .comment       0x00000360       0x12 ucos/interrupt_handler.o
+ .comment       0x00000372       0x12 ucos/interrupt_handler_gpio.o
+ .comment       0x00000384       0x12 ucos/or1200c.o
+ .comment       0x00000396       0x12 ucos/os_core.o
+ .comment       0x000003a8       0x12 ucos/os_dbg_r.o
+ .comment       0x000003ba       0x12 ucos/os_flag.o
+ .comment       0x000003cc       0x12 ucos/os_mbox.o
+ .comment       0x000003de       0x12 ucos/os_mem.o
+ .comment       0x000003f0       0x12 ucos/os_mutex.o
+ .comment       0x00000402       0x12 ucos/os_q.o
+ .comment       0x00000414       0x12 ucos/os_sem.o
+ .comment       0x00000426       0x12 ucos/os_task.o
+ .comment       0x00000438       0x12 ucos/os_time.o
+ .comment       0x0000044a       0x12 ucos/stack_chk.o
+ .comment       0x0000045c       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(glue.o)
+ .comment       0x0000046e       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(malloc.o)
+ .comment       0x00000480       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mallocr.o)
+ .comment       0x00000492       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memcpy.o)
+ .comment       0x000004a4       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(memset.o)
+ .comment       0x000004b6       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(mlock.o)
+ .comment       0x000004c8       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(sbrkr.o)
+ .comment       0x000004da       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(errno.o)
+ .comment       0x000004ec       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(freer.o)
+ .comment       0x000004fe       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(impure.o)
+ .comment       0x00000510       0x12 ../../../download/opt/ba-elf/ba-elf/lib/ba2/libc.a(reent.o)
+ .comment       0x00000522       0x12 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(fp-bit.o)
+ .comment       0x00000534       0x12 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(dp-bit.o)
+ .comment       0x00000546       0x12 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_muldi3.o)
+ .comment       0x00000558       0x12 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_lshrdi3.o)
+ .comment       0x0000056a       0x12 ../../../download/opt/ba-elf/lib/gcc/ba-elf/4.2.1/ba2/libgcc.a(_ashldi3.o)

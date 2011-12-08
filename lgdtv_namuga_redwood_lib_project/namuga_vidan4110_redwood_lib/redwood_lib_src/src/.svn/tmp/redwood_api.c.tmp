@@ -1,0 +1,471 @@
+#include <stdio.h>
+#include <pthread.h>
+
+#include "redwood_device_config.h"
+#include "redwood_return_code.h"
+#include "redwood_api.h"
+#include "redwood_usb_operation.h"
+
+/**********************************************************************/
+/* 	 																  */
+/*                         Global Variables                           */
+/* 																	  */
+/**********************************************************************/
+int isInitialized = 0;
+
+
+/**********************************************************************/
+/* 																	  */
+/*                        Extern Functions                            */
+/* 																	  */
+/**********************************************************************/
+extern void usleep(int usec);
+
+/**********************************************************************/
+/*																	  */
+/*                        Source Start                                */
+/* 																	  */
+/**********************************************************************/
+
+int redwood_system_init(void)
+{
+	pthread_mutex_init(&mutex_usb_operation, NULL);
+	
+	//Firmware Version Check
+	redwood_firmware_version_check();
+
+	return SUCCESS;
+}
+
+int redwood_system_exit(void)
+{
+	pthread_mutex_destroy(&mutex_usb_operation);
+	return SUCCESS;
+}
+
+int redwood_video_start(video_param_t *vParm)
+{
+	int ret;
+	int reopenTryCnt = 0;
+
+	pthread_mutex_lock(&mutex_usb_operation);
+	printf("===>VIDAN4110 INFO : redwood video start\n");
+
+	if (!isInitialized)
+	{
+		reopenTryCnt = 0;
+		do
+		{
+			ret = redwood_usb_device_open(VIDAN_USB_VID, VIDAN_USB_PID);
+			usleep(1000000);
+			printf("===>VIDAN4110 INFO : Reset Waiting - %d\n", reopenTryCnt);
+		} while ( ret < 0 && reopenTryCnt++ < 5 );
+		if ( ret < 0 )
+		{
+			printf("===>VIDAN4110 ERROR : redwood_usb_device_open result - %d\n", ret);
+			pthread_mutex_unlock(&mutex_usb_operation);
+			return ret;
+		}
+		else
+		{
+			usleep(100000); //Device Open Delay
+			isInitialized = 1;
+		}
+	}
+
+	if ( vParm->isAvataCaptureMode )
+	{
+		ret = redwood_video_avata_start_set(vParm);
+		usleep(1000000);
+		ret = redwood_usb_device_close();
+		usleep(1000000);
+		if ( ret < 0 )
+		{
+			printf("===>VIDAN4110 ERROR : redwood_usb_device_close result - %d\n", ret);
+		}
+		else
+		{
+			isInitialized = 0;
+		}
+		reopenTryCnt = 0;
+		while ( !isInitialized  &&  reopenTryCnt++ < 5 )
+		{
+			usleep(1000000);
+			ret = redwood_usb_device_open(VIDAN_USB_VID, VIDAN_USB_PID);
+			if ( ret < 0 )
+			{
+				printf("===>VIDAN4110 INFO : Reset Waiting - %d\n", reopenTryCnt);
+			}
+			else
+			{
+				usleep(100000); //Device Open Delay
+				isInitialized = 1;
+			}
+		}
+	}
+
+	//Start Video
+
+	ret = redwood_video_start_set(vParm);
+	if ( ret < 0 )
+	{
+		printf("===>VIDAN4110 ERROR : video_start set result - %d\n", ret);
+		pthread_mutex_unlock(&mutex_usb_operation);
+		return ret;
+	}
+	usbcontrol_video_thread_create(NULL);
+
+	pthread_mutex_unlock(&mutex_usb_operation);
+	printf(" %s End\n", __FUNCTION__ );
+
+	return SUCCESS;
+}
+
+int redwood_video_stop(void)
+{
+	int ret;
+
+	pthread_mutex_lock(&mutex_usb_operation);
+	printf("===>VIDAN4110 INFO : redwood video stop\n");
+
+	usbcontrol_video_thread_destory();
+
+	//while ( is_usbcontrol_video_thread_started )
+	//{
+	//	usleep(100000);
+	//}
+
+	//Stop Video
+	ret = redwood_video_stop_set();
+	if ( ret < 0 )
+	{
+		printf("===>VIDAN4110 ERROR : video_stop set result - %d\n", ret);
+		pthread_mutex_unlock(&mutex_usb_operation);
+		return ret;
+	} 
+
+	if ( !is_usbcontrol_audio_thread_started )
+	{
+		if ( isInitialized )
+		{
+			ret = redwood_usb_device_close();
+			usleep(1000000);
+
+			if ( ret < 0 )
+			{
+				printf("===>VIDAN4110 ERROR : redwood_usb_device_close result - %d\n", ret);
+				pthread_mutex_unlock(&mutex_usb_operation);
+				return ret;
+			}
+			else
+			{
+				isInitialized = 0;
+			}
+		}
+	}
+	
+	pthread_mutex_unlock(&mutex_usb_operation);
+	printf(" %s End\n", __FUNCTION__ );
+	return SUCCESS;
+}
+
+int redwood_audio_start(audio_param_t *aParm)
+{
+	int ret;
+	int reopenTryCnt = 0;
+
+	pthread_mutex_lock(&mutex_usb_operation);
+	printf("===>VIDAN4110 INFO : redwood audio start\n");
+
+	if (!isInitialized)
+	{
+		reopenTryCnt = 0;
+		do
+		{
+			ret = redwood_usb_device_open(VIDAN_USB_VID, VIDAN_USB_PID);
+			usleep(1000000);
+			printf("===>VIDAN4110 INFO : Reset Waiting - %d\n", reopenTryCnt);
+		} while ( ret < 0 && reopenTryCnt++ < 5 );
+		if ( ret < 0 )
+		{
+			printf("===>VIDAN4110 ERROR : redwood_usb_device_open result - %d\n", ret);
+			pthread_mutex_unlock(&mutex_usb_operation);
+			return ret;
+		}
+		else
+		{
+			usleep(100000); //Device Open Delay
+			isInitialized = 1;
+		}
+	}
+
+	//Start Audio
+	ret = redwood_audio_start_set(aParm);
+	if ( ret < 0 )
+	{
+		printf("===>VIDAN4110 ERROR : audio_start set result - %d\n", ret);
+		pthread_mutex_unlock(&mutex_usb_operation);
+		return ret;
+	}
+	usbcontrol_audio_thread_create(NULL);
+	pthread_mutex_unlock(&mutex_usb_operation);
+	printf(" %s End\n", __FUNCTION__ );
+
+	return SUCCESS;
+}
+
+int redwood_audio_stop(void)
+{
+	int ret;
+
+	printf("===>VIDAN4110 INFO : redwood audio stop\n");
+
+	pthread_mutex_lock(&mutex_usb_operation);
+	usbcontrol_audio_thread_destory();
+
+	//while ( is_usbcontrol_audio_thread_started )
+	//{
+	//	usleep(100000);
+	//}
+
+	//Stop Audio
+	ret = redwood_audio_stop_set();
+	if ( ret < 0 )
+	{
+		printf("===>VIDAN4110 ERROR : audio_stop set result - %d\n", ret);
+		pthread_mutex_unlock(&mutex_usb_operation);
+		return ret;
+	} 
+
+	if ( !is_usbcontrol_video_thread_started )
+	{
+		if ( isInitialized )
+		{
+			ret = redwood_usb_device_close();
+
+			if ( ret < 0 )
+			{
+				printf("===>VIDAN4110 ERROR : redwood_usb_device_close result - %d\n", ret);
+				pthread_mutex_unlock(&mutex_usb_operation);
+				return ret;
+			}
+			else
+			{
+				isInitialized = 0;
+			}
+		}
+	}
+	pthread_mutex_unlock(&mutex_usb_operation);
+	printf(" %s End\n", __FUNCTION__ );
+	return SUCCESS;
+}
+
+void redwood_h264_callback_register(void (*func)(unsigned int dataLen, char *dataBuf))
+{
+	h264callbackFunc = func;
+}
+
+void redwood_jpeg_callback_register(void (*func)(unsigned int dataLen, char *dataBuf))
+{
+	jpegcallbackFunc = func;
+}
+
+void redwood_pcm_callback_register(void (*func)(unsigned int dataLen, char *dataBuf))
+{
+	pcmcallbackFunc = func;
+}
+
+void redwood_keyframe_request(void)
+{
+	redwood_usb_keyframe_request();
+	return;
+}
+	
+void redwood_bitrate_set(int bps)
+{
+	redwood_usb_bitrate_set(bps);
+	return;
+}
+
+void redwood_framerate_set(int framerate)
+{
+	redwood_usb_framerate_set(framerate);
+	return;
+}
+
+void redwood_input_db_set(unsigned char input_db)
+{
+	redwood_usb_input_db_set(input_db);
+	return;
+}
+
+void redwood_agc_gain_set(unsigned char r26, 
+						  unsigned char r27, 
+						  unsigned char r28,
+						  unsigned char r29,
+						  unsigned char r30,
+						  unsigned char r31)
+{
+	redwood_usb_agc_gain_set(r26, r27, r28, r29, r30, r31);
+	return;
+}
+
+void redwood_audio_mute_set(unsigned char isMuteEnable)
+{
+	redwood_usb_audio_mute_set(isMuteEnable);
+	return;
+}
+
+void redwood_video_zoom_set(unsigned char zoomLevel)
+{
+	redwood_usb_video_zoom_set(zoomLevel);
+	return;
+}
+
+void redwood_video_flip_set(unsigned char isFlipEnable)
+{
+	redwood_usb_video_flip_set(isFlipEnable);
+	return;
+}
+
+//////////////////Video Setting API///////////////////////
+//Contrast
+void redwood_video_contrast_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_CONTRAST, level);
+	return;
+}	
+//Brightness
+void redwood_video_brightness_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_BRIGHTNESS, level);
+	return;
+}	
+//Saturation
+void redwood_video_saturation_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_SATURATION, level);
+	return;
+}	
+//Sharpness
+void redwood_video_sharpness_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_SHARPNESS, level);
+	return;
+}	
+//Hue
+void redwood_video_hue_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_HUE, level);
+	return;
+}	
+//Gamma
+void redwood_video_gamma_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_GAMMA, level);
+	return;
+}	
+//White Balance
+void redwood_video_white_balance_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_WHITE_BALANCE, level);
+	return;
+}	
+void redwood_video_auto_white_balance_set(unsigned int isAuto)
+{
+	if ( isAuto )
+		redwood_usb_video_property_set(PROP_WHITE_BALANCE, PROP_AUTO_ON);
+	else
+		redwood_usb_video_property_set(PROP_WHITE_BALANCE, PROP_AUTO_OFF);
+	return;
+}
+//Auto Exposure
+void redwood_video_exposure_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_EXPOSURE, level);
+	return;
+}	
+void redwood_video_auto_exposure_set(unsigned int isAuto)
+{
+	if ( isAuto )
+		redwood_usb_video_property_set(PROP_EXPOSURE, PROP_AUTO_ON);
+	else
+		redwood_usb_video_property_set(PROP_EXPOSURE, PROP_AUTO_OFF);
+	return;
+}
+//Power Line Freq.
+void redwood_video_power_line_freq_set(unsigned int level)
+{
+	redwood_usb_video_property_set(PROP_POWER_LINE_FREQ, level);
+	return;
+}
+
+/***************************************************************/
+/*																					*/
+/*						Firmware Upgrade API									*/
+/*																					*/
+/***************************************************************/
+int redwood_firmware_upgrade(char *romfilepath)
+{
+	int ret;
+
+	pthread_mutex_lock(&mutex_usb_operation);
+	printf("===>VIDAN4110 INFO : redwood firmware upgrade start\n");
+
+	if (!isInitialized)
+	{
+		ret = redwood_usb_device_open(VIDAN_USB_VID, VIDAN_USB_PID);
+		if ( ret < 0 )
+		{
+			printf("===>VIDAN4110 ERROR : redwood_usb_device_open result - %d\n", ret);
+			pthread_mutex_unlock(&mutex_usb_operation);
+			return ret;
+		}
+		else
+		{
+			usleep(100000); //Device Open Delay
+			isInitialized = 1;
+		}
+	}
+
+	//Start upgrade
+	ret = redwood_firmware_upgrade_start_set(romfilepath);
+	if ( ret < 0 )
+	{
+		printf("===>VIDAN4110 ERROR : firmware upgrade set result - %d\n", ret);
+		pthread_mutex_unlock(&mutex_usb_operation);
+		return ret;
+	}
+	usbcontrol_firmware_upgrade_thread_create(NULL);
+
+	pthread_mutex_unlock(&mutex_usb_operation);
+
+	while ( is_usbcontrol_firmware_upgrade_thread_started )
+		usleep(100000);
+
+	pthread_mutex_lock(&mutex_usb_operation);
+	usbcontrol_firmware_upgrade_thread_destory();
+
+	if ( isInitialized )
+	{
+		ret = redwood_usb_device_close();
+
+		if ( ret < 0 )
+		{
+			printf("===>VIDAN4110 ERROR : redwood_usb_device_close result - %d\n", ret);
+			pthread_mutex_unlock(&mutex_usb_operation);
+			return ret;
+		}
+		else
+		{
+			isInitialized = 0;
+		}
+	}
+	pthread_mutex_unlock(&mutex_usb_operation);
+	printf(" %s End\n", __FUNCTION__ );
+	return SUCCESS;
+}
+
+
+
+

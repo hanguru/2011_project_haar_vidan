@@ -1,0 +1,81 @@
+#ifndef _REDWOOD_USB_OPERATION_H_
+#define _REDWOOD_USB_OPERATION_H_
+
+#include "redwood_api.h"
+#include "redwood_video_property.h"
+
+#define USBCONTROL_VIDEO_THREAD_STACKSIZE	( 1 * 32 * 1024 )
+#define USBCONTROL_AUDIO_THREAD_STACKSIZE	( 1 * 32 * 1024 )
+#define USBCONTROL_FIRMWARE_UPGRADE_THREAD_STACKSIZE	( 1 * 32 * 1024 )
+#define USBCONTROL_THREAD_PRIORITY	51
+
+#define MAX_JPEG_QUALITY	90
+#define MIN_JPEG_QUALITY	20
+
+enum
+{
+	VIDEO_START_TYPE	= 	0x50,
+	VIDEO_STOP_TYPE		= 	0x51,
+	AUDIO_START_TYPE	= 	0x52,
+	AUDIO_STOP_TYPE		= 	0x53,
+};
+
+typedef enum
+{
+	JPEG_LENGTH_TYPE	= 	0x40,
+	H264_LENGTH_TYPE	= 	0x41,
+	PCM_LENGTH_TYPE		= 	0x42,
+} GET_LENGTH_CMD_TYPE;
+
+typedef enum
+{
+	JPEG_STREAM_EP_TYPE	= 	0x83, //EP3
+	H264_STREAM_EP_TYPE	= 	0x84, //EP4
+	PCM_STREAM_EP_TYPE	= 	0x85, //EP5
+} GET_STREAM_EP_TYPE;
+
+int redwood_usb_device_open(unsigned short vid, unsigned short pid);
+int redwood_usb_device_close(void);
+void redwood_usb_keyframe_request(void);
+void redwood_usb_bitrate_set(int bps);
+void redwood_usb_framerate_set(int framerate);
+void redwood_usb_input_db_set(unsigned char input_db);
+void redwood_usb_agc_gain_set(unsigned char r26,
+							  unsigned char r27, 
+							  unsigned char r28,
+							  unsigned char r29,
+							  unsigned char r30,
+							  unsigned char r31);
+
+void redwood_usb_audio_mute_set(unsigned char isMuteEnable);
+void redwood_usb_video_zoom_set(unsigned char zoomLevel);
+void redwood_usb_video_flip_set(unsigned char isFlipEnable);
+void redwood_usb_video_property_set(VIDEO_PROP_TYPE vpt, VIDEO_PROP_LEVEL vpl);
+int redwood_video_start_set(video_param_t *vParm);
+int redwood_video_stop_set(void);
+int redwood_audio_start_set(audio_param_t *aParm);
+int redwood_audio_stop_set(void);
+int redwood_video_avata_start_set(video_param_t *vParm);
+int redwood_firmware_upgrade_start_set(char *romfilepath);
+int redwood_firmware_version_check(void);
+
+int usbcontrol_video_thread_create(void *ptr);
+int usbcontrol_video_thread_destory(void);
+int usbcontrol_audio_thread_create(void *ptr);
+int usbcontrol_audio_thread_destory(void);
+int usbcontrol_firmware_upgrade_thread_create(void *ptr);
+int usbcontrol_firmware_upgrade_thread_destory(void);
+
+extern char is_usbcontrol_video_thread_started;
+extern char is_usbcontrol_audio_thread_started;
+extern char is_usbcontrol_firmware_upgrade_thread_started;
+extern pthread_mutex_t mutex_usb_operation;
+
+void (*h264callbackFunc)(unsigned int dataLen, char *dataBuf);
+void (*jpegcallbackFunc)(unsigned int dataLen, char *dataBuf);
+void (*pcmcallbackFunc)(unsigned int dataLen, char *dataBuf);
+
+
+#endif
+
+
